@@ -3,32 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hashaam Tanveer | Revenue Systems Architect</title>
+<title>Hashaam Tanveer | Revenue Operations & CRM Architect</title>
+
+<meta name="description" content="Hashaam Tanveer – Revenue Operations Specialist, HubSpot Super Admin, CRM Architect, Marketing Automation Engineer, Dynamics 365 Integrator with enterprise automation experience.">
+
+<meta name="keywords" content="Revenue Operations, RevOps, HubSpot Super Admin, CRM Architect, Marketing Automation, Workflow Automation, Lead Routing, Dynamics 365 Integration, Zapier, n8n, Lifecycle Management, Sales Operations">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-
-<meta name="description" content="Marketing Systems Architect, HubSpot Super Admin & Revenue Operations Specialist building scalable CRM automation systems.">
-
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <style>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
-  background:#050816;
-  color:#f8fafc;
+  background:#041c18;
+  color:#e2fdf7;
   overflow-x:hidden;
 }
 
-/* ===== LOTTIE BACKGROUND ===== */
-
+/* Lottie Background */
 .lottie-bg{
   position:fixed;
   top:0;
@@ -36,7 +30,7 @@ body{
   width:100%;
   height:100%;
   z-index:-2;
-  opacity:0.15;
+  opacity:0.12;
   pointer-events:none;
 }
 
@@ -44,40 +38,31 @@ body{
   position:fixed;
   width:100%;
   height:100%;
-  background:linear-gradient(180deg,rgba(5,8,22,0.8),rgba(5,8,22,1));
+  background:linear-gradient(to bottom,#041c18 10%,#021412 100%);
   z-index:-1;
 }
 
-/* ===== NAV ===== */
-
+/* NAV */
 nav{
   position:fixed;
   width:100%;
   padding:20px 8%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  background:rgba(5,8,22,0.7);
+  background:rgba(0,20,18,0.7);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
 nav a{
-  color:#cbd5e1;
+  color:#9fffe7;
   text-decoration:none;
-  margin-left:30px;
-  transition:0.3s;
+  margin-left:25px;
+  transition:.3s;
 }
+nav a:hover{color:#00ffcc;}
 
-nav a:hover{
-  color:#22d3ee;
-}
-
-/* ===== SECTIONS ===== */
-
-section{
-  padding:120px 10%;
-}
+section{padding:120px 10%;}
 
 .hero{
   height:100vh;
@@ -87,82 +72,78 @@ section{
 }
 
 h1{
-  font-size:60px;
+  font-size:58px;
   font-weight:900;
-  line-height:1.1;
 }
 
 .gradient{
-  background:linear-gradient(90deg,#3b82f6,#06b6d4,#8b5cf6);
+  background:linear-gradient(90deg,#00ffcc,#00bfa6);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .subtitle{
-  font-size:20px;
-  color:#94a3b8;
-  margin-top:25px;
+  margin-top:20px;
   max-width:750px;
+  color:#8dded1;
+  font-size:19px;
 }
 
 .profile{
-  width:150px;
+  width:140px;
   border-radius:50%;
   margin-top:30px;
-  border:3px solid #22d3ee;
+  border:3px solid #00ffcc;
 }
-
-/* ===== BUTTON ===== */
 
 .btn{
   display:inline-block;
-  margin-top:40px;
+  margin-top:35px;
   padding:14px 28px;
-  border-radius:12px;
-  background:linear-gradient(90deg,#3b82f6,#06b6d4);
-  color:white;
+  border-radius:10px;
+  background:#00ffcc;
+  color:#021412;
   text-decoration:none;
   font-weight:600;
-  transition:0.3s;
+  transition:.3s;
 }
-
 .btn:hover{
   transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(59,130,246,0.4);
 }
 
-/* ===== CASE STUDIES ===== */
-
+/* Case Studies */
 .section-title{
-  font-size:34px;
-  font-weight:800;
+  font-size:32px;
   margin-bottom:60px;
+  font-weight:800;
 }
 
 .case{
-  margin-bottom:90px;
+  margin-bottom:80px;
 }
 
 .case h3{
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 
+/* FIXED HEIGHT IMAGE CONTAINER */
 .image-wrapper{
   max-width:900px;
-  margin-top:20px;
-  border-radius:16px;
+  height:420px;
   overflow:hidden;
-  box-shadow:0 25px 50px rgba(0,0,0,0.6);
+  border-radius:16px;
+  border:1px solid #064d44;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+  cursor:pointer;
 }
 
 .image-wrapper img{
   width:100%;
-  height:auto;
-  display:block;
+  height:100%;
+  object-fit:cover;
 }
 
-/* ===== METRICS ===== */
-
+/* Metrics */
 .metrics{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -170,30 +151,52 @@ h1{
 }
 
 .metric-card{
-  background:rgba(15,23,42,0.8);
-  padding:40px;
-  border-radius:20px;
-  border:1px solid #1e293b;
+  background:#062823;
+  padding:35px;
+  border-radius:16px;
+  border:1px solid #064d44;
   text-align:center;
-  transition:0.3s;
-}
-
-.metric-card:hover{
-  transform:translateY(-8px);
-  border-color:#22d3ee;
 }
 
 .metric{
   font-size:36px;
-  font-weight:900;
-  color:#22d3ee;
+  font-weight:800;
+  color:#00ffcc;
 }
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+.modal.active{display:flex;}
 
 footer{
   padding:60px;
   text-align:center;
-  background:#020617;
-  color:#64748b;
+  background:#021412;
+  color:#6ad6c8;
+}
+
+/* Hidden ATS Block */
+.ats-keywords{
+  position:absolute;
+  left:-9999px;
+  font-size:1px;
+  opacity:0;
 }
 
 </style>
@@ -201,13 +204,12 @@ footer{
 
 <body>
 
-<!-- Lottie Background -->
 <div class="lottie-bg">
 <lottie-player 
-  src="https://assets10.lottiefiles.com/packages/lf20_Stt1R8.json" 
-  background="transparent"  
-  speed="1"  
-  loop  
+  src="https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json"
+  background="transparent"
+  speed="1"
+  loop
   autoplay>
 </lottie-player>
 </div>
@@ -219,78 +221,66 @@ footer{
 <div>
 <a href="#projects">Projects</a>
 <a href="#impact">Impact</a>
-<a href="#hire">Hire Me</a>
+<a href="#hire">Hire</a>
 </div>
 </nav>
 
 <section class="hero">
-<h1>I Build <span class="gradient">Scalable Revenue Systems</span></h1>
+<h1>I Engineer <span class="gradient">Revenue Infrastructure</span></h1>
 
 <img src="images/Hashaam pic.png" class="profile">
 
 <p class="subtitle">
-Marketing Systems Architect & HubSpot Super Admin building automation frameworks and scalable CRM infrastructure for enterprise growth.
+Revenue Operations Specialist, HubSpot Super Admin, CRM Architect & Marketing Automation Engineer focused on scalable lifecycle systems, enterprise lead routing, and automation frameworks.
 </p>
 
-<a href="#hire" class="btn">Hire Me</a>
-<a href="Hashaam_Tanveer_Resume.pdf" target="_blank" class="btn" style="margin-left:20px;background:#1e293b;">Download Resume</a>
+<a href="Hashaam_Tanveer_Resume.pdf" target="_blank" class="btn">Download Resume</a>
 </section>
 
 <section id="projects">
-<h2 class="section-title gradient">Case Studies</h2>
+<h2 class="section-title">Enterprise Automation Case Studies</h2>
 
 <div class="case">
-<h3>Adobe Partner Performance Dashboard</h3>
-<a href="images/Dashboard HubSpot.png" target="_blank">
-<div class="image-wrapper">
+<h3>Adobe Partner Dashboard – Reporting & Attribution</h3>
+<div class="image-wrapper" onclick="openModal('images/Dashboard HubSpot.png')">
 <img src="images/Dashboard HubSpot.png">
 </div>
-</a>
 </div>
 
 <div class="case">
-<h3>Enterprise Lead Routing Automation</h3>
-<a href="images/Lead pass Workflow.png" target="_blank">
-<div class="image-wrapper">
+<h3>Lead Routing & Multi-Branch Workflow Logic</h3>
+<div class="image-wrapper" onclick="openModal('images/Lead pass Workflow.png')">
 <img src="images/Lead pass Workflow.png">
 </div>
-</a>
 </div>
 
 <div class="case">
 <h3>Microsoft Teams Webinar Automation</h3>
-<a href="images/Webinar wf.png" target="_blank">
-<div class="image-wrapper">
+<div class="image-wrapper" onclick="openModal('images/Webinar wf.png')">
 <img src="images/Webinar wf.png">
 </div>
-</a>
 </div>
 
 <div class="case">
-<h3>Education Campaign Segmentation</h3>
-<a href="images/Education Campaign.png" target="_blank">
-<div class="image-wrapper">
+<h3>Education Sector Campaign Segmentation</h3>
+<div class="image-wrapper" onclick="openModal('images/Education Campaign.png')">
 <img src="images/Education Campaign.png">
 </div>
-</a>
 </div>
 
 </section>
 
 <section id="impact">
-<h2 class="section-title gradient">Business Impact</h2>
-
+<h2 class="section-title">Business Impact</h2>
 <div class="metrics">
 <div class="metric-card">
 <div class="metric">25+</div>
-<p>Automation Workflows Built</p>
+<p>Advanced Automation Systems Built</p>
 </div>
-
 <div class="metric-card">
 <div class="metric">30%</div>
 <p>Manual Assignment Reduction</p>
 </div>
-
 <div class="metric-card">
 <div class="metric">Global</div>
 <p>US, UK, AUS, CAN Systems</p>
@@ -299,16 +289,41 @@ Marketing Systems Architect & HubSpot Super Admin building automation frameworks
 </section>
 
 <section id="hire">
-<h2 class="section-title gradient">Open to Global Opportunities</h2>
+<h2 class="section-title">Open to Global RevOps & CRM Roles</h2>
 <p class="subtitle">
-Available for Marketing Operations, RevOps, CRM Architecture, and Automation Engineering roles.
+Available for Revenue Operations, Marketing Operations, CRM Architecture, Lifecycle Engineering, and Automation Engineering roles (Remote / International).
 </p>
 <a href="mailto:hashaamtanveerk@gmail.com" class="btn">Contact Me</a>
 </section>
 
 <footer>
-© 2026 Hashaam Tanveer | Revenue Systems Architect
+© 2026 Hashaam Tanveer | Revenue Operations Architect
 </footer>
+
+<!-- Modal -->
+<div class="modal" id="modal" onclick="closeModal()">
+<img id="modalImg">
+</div>
+
+<script>
+function openModal(src){
+  document.getElementById("modalImg").src = src;
+  document.getElementById("modal").classList.add("active");
+}
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+</script>
+
+<!-- ATS Hidden Block -->
+<div class="ats-keywords">
+HubSpot Super Admin, Revenue Operations Manager, Marketing Automation Specialist,
+CRM Architect, Lifecycle Management, Lead Scoring, Lead Routing,
+Salesforce Integration, Dynamics 365 CRM, Zapier Automation,
+n8n Workflows, B2B SaaS Marketing Systems,
+Sales Operations Alignment, Demand Generation Infrastructure,
+Enterprise CRM Strategy, Data Governance, Reporting Dashboards
+</div>
 
 </body>
 </html>
