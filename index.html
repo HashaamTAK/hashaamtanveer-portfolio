@@ -1,17 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hashaam Tanveer | Revenue Systems Architect</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
 <meta name="description" content="Hashaam Tanveer - Marketing Systems Architect, HubSpot Super Admin, CRM & Revenue Operations Specialist with 5+ years experience building automation and scalable CRM systems.">
-
 <meta name="keywords" content="HubSpot Super Admin, Marketing Operations, Revenue Operations, CRM Architect, Automation Engineer, Dynamics 365, Zapier, n8n, RevOps Specialist">
-
 <meta name="author" content="Hashaam Tanveer">
+
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -19,9 +20,9 @@
   scroll-behavior:smooth;
 }
 
-body {
+body{
   font-family:'Inter',sans-serif;
-  background: radial-gradient(circle at 20% 20%, #0f172a, #020617 60%);
+  background: linear-gradient(180deg,#0b1220 0%, #050816 100%);
   color:#f8fafc;
 }
 
@@ -32,21 +33,27 @@ nav{
   padding:20px 8%;
   display:flex;
   justify-content:space-between;
-  background:rgba(4,7,15,0.8);
-  backdrop-filter:blur(15px);
+  align-items:center;
+  background:rgba(5,8,22,0.8);
+  backdrop-filter:blur(12px);
   z-index:1000;
 }
 
 nav a{
   color:#cbd5e1;
   text-decoration:none;
-  margin-left:25px;
+  margin-left:30px;
   font-weight:500;
+  transition:0.3s;
 }
 
-nav a:hover{color:#22d3ee;}
+nav a:hover{
+  color:#22d3ee;
+}
 
-section{padding:120px 10%;}
+section{
+  padding:120px 10%;
+}
 
 .hero{
   height:100vh;
@@ -58,6 +65,7 @@ section{padding:120px 10%;}
 h1{
   font-size:64px;
   font-weight:900;
+  line-height:1.1;
 }
 
 .gradient{
@@ -90,45 +98,67 @@ h1{
   box-shadow:0 20px 40px rgba(59,130,246,0.4);
 }
 
-.grid{
+.profile{
+  width:160px;
+  border-radius:50%;
+  margin-top:30px;
+  border:3px solid #22d3ee;
+}
+
+.section-title{
+  font-size:36px;
+  font-weight:800;
+  margin-bottom:60px;
+}
+
+.case-study{
+  margin-bottom:100px;
+}
+
+.case-header{
+  margin-bottom:30px;
+}
+
+.case-header h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.case-header p{
+  color:#94a3b8;
+  max-width:700px;
+}
+
+.image-wrapper{
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(0,0,0,0.6);
+  transition:0.4s;
+}
+
+.image-wrapper:hover{
+  transform:scale(1.02);
+}
+
+.image-wrapper img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.metrics{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:40px;
   margin-top:60px;
 }
 
-.screenshot-card{
-  background:rgba(15,23,42,0.8);
-  border:1px solid #1e293b;
-  border-radius:20px;
-  padding:20px;
-  transition:0.3s;
-}
-
-.screenshot-card:hover{
-  transform:translateY(-10px);
-  border-color:#22d3ee;
-}
-
-.screenshot-card img{
-  width:100%;
-  height:280px;
-  object-fit:cover;
-  border-radius:15px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.screenshot-card img:hover{
-  transform:scale(1.03);
-}
-
-.card{
+.metric-card{
   background:#0f172a;
   padding:40px;
   border-radius:20px;
   border:1px solid #1e293b;
-  transition:0.4s;
+  text-align:center;
 }
 
 .metric{
@@ -139,18 +169,19 @@ h1{
 
 .highlight-box{
   margin-top:60px;
-  padding:40px;
+  padding:50px;
   background:#0b1220;
   border-radius:20px;
   border:1px solid #1e293b;
 }
 
 footer{
-  padding:70px;
+  padding:60px;
   text-align:center;
   background:#020617;
   color:#64748b;
 }
+
 </style>
 </head>
 
@@ -159,102 +190,101 @@ footer{
 <nav>
 <div><strong>Hashaam Tanveer</strong></div>
 <div>
+<a href="#projects">Projects</a>
 <a href="#impact">Impact</a>
-<a href="#expertise">Expertise</a>
 <a href="#hire">Hire Me</a>
 </div>
 </nav>
 
 <section class="hero">
 <h1>I Build <span class="gradient">Scalable Revenue Systems</span></h1>
-  <img src="images/Hashaam pic.png" 
-style="width:160px; border-radius:50%; margin-top:30px; border:3px solid #22d3ee;">
+
+<img src="images/Hashaam pic.png" class="profile">
+
 <p class="subtitle">
 Marketing Systems Architect & HubSpot Super Admin with 5+ years of experience designing CRM ecosystems, automation frameworks, and enterprise lead infrastructure for global partner organizations.
 </p>
+
 <a href="#hire" class="btn">Hire Me</a>
-<a href="Hashaam_Tanveer_Resume.pdf" class="btn" style="margin-left:20px;background:#1e293b;">Download Resume</a>
+<a href="Hashaam_Tanveer_Resume.pdf" target="_blank" class="btn" style="margin-left:20px;background:#1e293b;">Download Resume</a>
+
 </section>
+
 <section id="projects">
-<h2 class="gradient">Live System Screenshots</h2>
+<h2 class="section-title gradient">Case Studies</h2>
 
-<div class="grid">
-
-<div class="screenshot-card">
-<h3>HubSpot Dashboard</h3>
+<div class="case-study">
+<div class="case-header">
+<h3>Adobe Partner Performance Dashboard</h3>
+<p>Centralized reporting architecture tracking campaign attribution, MQL → SQL progression, and revenue visibility.</p>
+</div>
 <a href="images/Dashboard HubSpot.png" target="_blank">
+<div class="image-wrapper">
 <img src="images/Dashboard HubSpot.png">
+</div>
 </a>
 </div>
 
-<div class="screenshot-card">
-<h3>Lead Routing Workflow</h3>
+<div class="case-study">
+<div class="case-header">
+<h3>Enterprise Lead Routing Automation</h3>
+<p>Multi-branch conditional workflow reducing manual assignment effort and improving segmentation accuracy.</p>
+</div>
 <a href="images/Lead pass Workflow.png" target="_blank">
+<div class="image-wrapper">
 <img src="images/Lead pass Workflow.png">
+</div>
 </a>
 </div>
 
-<div class="screenshot-card">
-<h3>Webinar Automation</h3>
+<div class="case-study">
+<div class="case-header">
+<h3>Microsoft Teams Webinar Automation</h3>
+<p>Automated webinar registration, reminders, attendance tagging and lifecycle transitions.</p>
+</div>
 <a href="images/Webinar wf.png" target="_blank">
+<div class="image-wrapper">
 <img src="images/Webinar wf.png">
+</div>
 </a>
 </div>
 
-<div class="screenshot-card">
-<h3>Education Campaign Logic</h3>
+<div class="case-study">
+<div class="case-header">
+<h3>Education Enterprise Campaign Segmentation</h3>
+<p>Structured K-12 lead routing logic with conditional filters and sales notifications.</p>
+</div>
 <a href="images/Education Campaign.png" target="_blank">
+<div class="image-wrapper">
 <img src="images/Education Campaign.png">
+</div>
 </a>
 </div>
 
-</div>
 </section>
-<section id="impact">
-<h2 class="gradient">Business Impact</h2>
-<div class="grid">
 
-<div class="card">
+<section id="impact">
+<h2 class="section-title gradient">Business Impact</h2>
+
+<div class="metrics">
+
+<div class="metric-card">
 <div class="metric">25+</div>
-<p>Advanced Multi-Branch Automation Workflows Built</p>
+<p>Advanced Automation Workflows Built</p>
 </div>
 
-<div class="card">
+<div class="metric-card">
 <div class="metric">30%</div>
 <p>Manual Lead Assignment Reduction</p>
 </div>
 
-<div class="card">
+<div class="metric-card">
 <div class="metric">Global</div>
 <p>US, UK, AUS, CAN Partner Campaign Systems</p>
 </div>
 
 </div>
-</section>
 
-<section id="expertise">
-<h2 class="gradient">Core Capabilities</h2>
-<div class="grid">
-
-<div class="card">
-<h3>CRM Architecture</h3>
-<p>Lifecycle engineering (Subscriber → MQL → SQL → Opportunity → Customer), deal pipeline optimization, attribution modeling.</p>
-</div>
-
-<div class="card">
-<h3>Automation Engineering</h3>
-<p>HubSpot workflows, conditional routing, webinar automation, Zapier/n8n integrations, internal SLA alerts.</p>
-</div>
-
-<div class="card">
-<h3>Revenue Operations</h3>
-<p>Sales-marketing alignment systems, partner dashboards, reporting automation, D365 CRM synchronization.</p>
-</div>
-
-</div>
-
-<div class="highlight-box">
-<h3>Why Recruiters Hire Me</h3>
 <div class="highlight-box">
 <h3>Why Recruiters Hire Me</h3>
 <p style="margin-top:20px;color:#94a3b8;">
@@ -264,20 +294,17 @@ Marketing Systems Architect & HubSpot Super Admin with 5+ years of experience de
 ✔ I align marketing & sales infrastructure<br>
 ✔ I build enterprise-ready CRM architecture
 </p>
-</div>
 
-<div class="highlight-box">
-<h3>Tech Stack</h3>
-<p>
+<h3 style="margin-top:40px;">Tech Stack</h3>
+<p style="margin-top:15px;color:#94a3b8;">
 HubSpot • Dynamics 365 • Zapier • n8n • Google Analytics • Wrike • Jira • WordPress • Zoho CRM • GoHighLevel
 </p>
 </div>
-</p>
-</div>
+
 </section>
 
 <section id="hire">
-<h2 class="gradient">Open to Global Opportunities</h2>
+<h2 class="section-title gradient">Open to Global Opportunities</h2>
 <p class="subtitle">
 Available for Marketing Operations, RevOps, CRM Architecture, and Automation Engineering roles (Remote / International).
 </p>
