@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,7 +8,7 @@
 
 <title>Hashaam Tanveer | Revenue Systems Architect</title>
 
-<meta name="description" content="Revenue Operations Architect and HubSpot Super Admin building scalable CRM automation systems and marketing infrastructure.">
+<meta name="description" content="Revenue Operations Architect and HubSpot Super Admin building scalable CRM automation and marketing infrastructure.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
@@ -15,7 +16,11 @@
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
 font-family:Inter;
@@ -24,7 +29,7 @@ color:#e6fffa;
 overflow-x:hidden;
 }
 
-/* Background */
+/* Animated background */
 
 .lottie{
 position:fixed;
@@ -64,11 +69,15 @@ margin-left:25px;
 font-weight:500;
 }
 
-nav a:hover{color:#00ffcc}
+nav a:hover{
+color:#00ffcc;
+}
 
 /* Layout */
 
-section{padding:120px 10%}
+section{
+padding:120px 10%;
+}
 
 .hero{
 height:100vh;
@@ -117,9 +126,11 @@ margin-right:15px;
 transition:.3s;
 }
 
-.btn:hover{transform:translateY(-3px)}
+.btn:hover{
+transform:translateY(-3px);
+}
 
-/* Scroll Animation */
+/* Scroll reveal */
 
 .reveal{
 opacity:0;
@@ -132,13 +143,15 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* Projects */
+/* Section title */
 
 .section-title{
 font-size:32px;
 font-weight:800;
 margin-bottom:60px;
 }
+
+/* Projects grid */
 
 .grid{
 display:grid;
@@ -174,7 +187,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* Modal */
+/* Modal popup */
 
 .modal{
 position:fixed;
@@ -195,9 +208,11 @@ max-height:90%;
 border-radius:10px;
 }
 
-.modal.active{display:flex}
+.modal.active{
+display:flex;
+}
 
-/* Logos */
+/* Tech stack */
 
 .logos{
 display:flex;
@@ -211,16 +226,18 @@ margin-top:40px;
 width:80px;
 height:60px;
 object-fit:contain;
-opacity:.85;
+padding:10px;
+background:#042a26;
+border-radius:8px;
 transition:.3s;
 }
 
 .logos img:hover{
 transform:scale(1.15);
-opacity:1;
+background:#064d44;
 }
 
-/* Diagram */
+/* Architecture diagram */
 
 .diagram{
 margin-top:80px;
@@ -268,19 +285,28 @@ color:#7fd6c8;
 <body>
 
 <div class="lottie">
-<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="1" loop autoplay></lottie-player>
+<lottie-player
+src="https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json"
+background="transparent"
+speed="1"
+loop
+autoplay>
+</lottie-player>
 </div>
 
 <div class="overlay"></div>
 
 <nav>
+
 <div><strong>Hashaam Tanveer</strong></div>
+
 <div>
 <a href="#projects">Projects</a>
 <a href="#stack">Stack</a>
 <a href="#architecture">Architecture</a>
 <a href="#contact">Contact</a>
 </div>
+
 </nav>
 
 <section class="hero reveal">
@@ -290,7 +316,7 @@ color:#7fd6c8;
 <img src="images/Hashaam pic.png" class="profile">
 
 <p class="subtitle">
-HubSpot Super Admin and RevOps Architect building scalable marketing automation and CRM infrastructure.
+HubSpot Super Admin and RevOps Architect building scalable CRM automation, lifecycle frameworks, and marketing operations systems.
 </p>
 
 <a href="Hashaam_Tanveer_Resume.pdf" class="btn">Download Resume</a>
@@ -307,17 +333,17 @@ HubSpot Super Admin and RevOps Architect building scalable marketing automation 
 
 <div class="project" onclick="openModal('images/Dashboard HubSpot.png')">
 <div class="thumb"><img src="images/Dashboard HubSpot.png"></div>
-<h3>HubSpot Performance Dashboard</h3>
+<h3>HubSpot Revenue Dashboard</h3>
 </div>
 
 <div class="project" onclick="openModal('images/Lead pass Workflow.png')">
 <div class="thumb"><img src="images/Lead pass Workflow.png"></div>
-<h3>Lead Routing Workflow</h3>
+<h3>Lead Routing Automation</h3>
 </div>
 
 <div class="project" onclick="openModal('images/Webinar wf.png')">
 <div class="thumb"><img src="images/Webinar wf.png"></div>
-<h3>Webinar Automation</h3>
+<h3>Webinar Automation System</h3>
 </div>
 
 <div class="project" onclick="openModal('images/Education Campaign.png')">
@@ -351,24 +377,40 @@ HubSpot Super Admin and RevOps Architect building scalable marketing automation 
 <div class="logos">
 
 <img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg">
-<img src="https://cdn.worldvectorlogo.com/logos/microsoft-dynamics-365.svg">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Microsoft_Dynamics_365_logo.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/n8n.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/clickup.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/wrike.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg">
-<img src="https://cdn.worldvectorlogo.com/logos/zoho.svg">
+
+<img src="https://cdn.worldvectorlogo.com/logos/zoho-crm.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/canva-1.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/meta-1.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg">
-<img src="https://cdn.worldvectorlogo.com/logos/google-gemini.svg">
-<img src="https://cdn.worldvectorlogo.com/logos/anthropic.svg">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg">
+
 <img src="https://cdn.worldvectorlogo.com/logos/replit.svg">
 
-<img src="images/gohighlevel.png">
-<img src="images/lovable.png">
-<img src="images/atoms.png">
-<img src="images/clay.png">
+<img src="https://seeklogo.com/images/C/clay-logo-9E7A76B6E4-seeklogo.com.png">
+
+<img src="https://seeklogo.com/images/G/gohighlevel-logo-4A6F57E4AA-seeklogo.com.png">
+
+<img src="https://seeklogo.com/images/L/lovable-logo-DC2CBEA4A3-seeklogo.com.png">
+
+<img src="https://seeklogo.com/images/A/atoms-logo-38E1B6B4E4-seeklogo.com.png">
 
 </div>
 
@@ -415,7 +457,9 @@ Revenue Operations • CRM Architecture • Marketing Automation Leadership
 </section>
 
 <footer>
+
 © 2026 Hashaam Tanveer | Revenue Operations Architect
+
 </footer>
 
 <div class="modal" id="modal" onclick="closeModal()">
