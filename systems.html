@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Systems Architecture | Hashaam Tanveer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 body{
-font-family:'Inter',sans-serif;
+font-family:Inter;
 background:#011a17;
 color:#e6fffa;
-overflow-x:hidden;
+margin:0;
 }
 
-/* Animated Particle Background */
+/* animated gradient */
 
-canvas{
+body::before{
+content:"";
 position:fixed;
-top:0;
-left:0;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,#002e2a,#01413c,#002e2a);
+animation:bg 18s linear infinite;
 z-index:-1;
 }
 
-/* Layout */
+@keyframes bg{
+0%{transform:translateX(0)}
+50%{transform:translateX(-50%)}
+100%{transform:translateX(0)}
+}
 
 .container{
 max-width:1200px;
@@ -42,31 +42,22 @@ padding:120px 20px;
 }
 
 h1{
-font-size:46px;
-font-weight:800;
-margin-bottom:20px;
+font-size:48px;
+margin-bottom:30px;
 }
-
-.subtitle{
-color:#7fd6c8;
-margin-bottom:80px;
-max-width:700px;
-}
-
-/* System Cards */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:40px;
 }
 
 .card{
 background:#042a26;
-border-radius:12px;
 padding:25px;
+border-radius:12px;
 border:1px solid #064d44;
-transition:0.3s;
+transition:.3s;
 }
 
 .card:hover{
@@ -80,171 +71,49 @@ border-radius:8px;
 margin-bottom:15px;
 }
 
-.card h3{
-margin-bottom:10px;
-}
-
-.card p{
-color:#86d9cc;
-font-size:14px;
-}
-
-/* Architecture Section */
-
-.architecture{
-margin-top:120px;
-}
-
-.arch-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-}
-
-.arch-box{
-background:#03231f;
-padding:30px;
-border-radius:10px;
-border:1px solid #064d44;
-}
-
-.arch-box h4{
-margin-bottom:10px;
-color:#00ffcc;
-}
-
-.arch-box p{
-font-size:14px;
-color:#86d9cc;
-}
-
-/* Back Button */
-
 .back{
 display:inline-block;
-margin-top:60px;
-padding:12px 22px;
+margin-top:80px;
+padding:12px 25px;
 background:#00ffcc;
 color:#01201c;
 border-radius:8px;
 text-decoration:none;
-font-weight:600;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
 <div class="container">
 
-<h1>Revenue Systems Architecture</h1>
-
-<p class="subtitle">
-Technical architecture behind CRM automation systems, lifecycle frameworks, and enterprise marketing operations infrastructure.
-</p>
+<h1>Automation System Architecture</h1>
 
 <div class="grid">
 
 <div class="card">
-
 <img src="images/Dashboard HubSpot.png">
-
 <h3>HubSpot Analytics Architecture</h3>
-
-<p>
-Centralized revenue reporting dashboards, campaign attribution modeling, and lifecycle performance tracking for partner marketing.
-</p>
-
+<p>Enterprise revenue reporting dashboards and lifecycle analytics.</p>
 </div>
 
 <div class="card">
-
 <img src="images/Lead pass Workflow.png">
-
-<h3>Lead Routing Automation Engine</h3>
-
-<p>
-Multi-branch workflow architecture routing inbound leads based on lifecycle stage, campaign source, and qualification logic.
-</p>
-
+<h3>Lead Routing Engine</h3>
+<p>Multi-branch lead routing automation architecture.</p>
 </div>
 
 <div class="card">
-
 <img src="images/Webinar wf.png">
-
-<h3>Webinar Automation Infrastructure</h3>
-
-<p>
-Teams webinar registration, automated CRM tagging, lifecycle transitions, and marketing automation sequences.
-</p>
-
+<h3>Webinar Automation System</h3>
+<p>Teams webinar integration with CRM lifecycle automation.</p>
 </div>
 
 <div class="card">
-
 <img src="images/Education Campaign.png">
-
-<h3>Enterprise Campaign Segmentation</h3>
-
-<p>
-Education campaign workflows with conditional enrollment logic and campaign-specific segmentation automation.
-</p>
-
-</div>
-
-</div>
-
-<div class="architecture">
-
-<h1>Automation Stack</h1>
-
-<div class="arch-grid">
-
-<div class="arch-box">
-
-<h4>CRM Systems</h4>
-
-<p>
-HubSpot • Dynamics 365 • Zoho CRM
-</p>
-
-</div>
-
-<div class="arch-box">
-
-<h4>Automation Infrastructure</h4>
-
-<p>
-HubSpot Workflows • Zapier • n8n • Lifecycle Automation
-</p>
-
-</div>
-
-<div class="arch-box">
-
-<h4>Marketing Operations</h4>
-
-<p>
-Campaign orchestration, lead scoring, segmentation frameworks, and reporting automation.
-</p>
-
-</div>
-
-<div class="arch-box">
-
-<h4>Project Management Systems</h4>
-
-<p>
-Wrike workspace automation, campaign workflows, and cross-team collaboration pipelines.
-</p>
-
-</div>
-
+<h3>Education Campaign Automation</h3>
+<p>Conditional segmentation workflows for enterprise campaigns.</p>
 </div>
 
 </div>
@@ -252,52 +121,6 @@ Wrike workspace automation, campaign workflows, and cross-team collaboration pip
 <a href="index.html" class="back">Back to Portfolio</a>
 
 </div>
-
-<script>
-
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<80;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5,
-size:2
-});
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-
-p.x+=p.vx;
-p.y+=p.vy;
-
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fillStyle="#00ffcc";
-ctx.fill();
-
-});
-
-requestAnimationFrame(animate);
-}
-
-animate();
-
-</script>
 
 </body>
 </html>
