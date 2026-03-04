@@ -24,7 +24,7 @@ color:#e6fffa;
 overflow-x:hidden;
 }
 
-/* Background animation */
+/* Animated Background */
 
 .lottie{
 position:fixed;
@@ -121,7 +121,7 @@ transition:.3s;
 transform:translateY(-3px);
 }
 
-/* Scroll reveal */
+/* Scroll Animation */
 
 .reveal{
 opacity:0;
@@ -199,7 +199,7 @@ border-radius:10px;
 
 .modal.active{display:flex}
 
-/* Tech stack */
+/* Logos */
 
 .logos{
 display:flex;
@@ -215,21 +215,13 @@ height:60px;
 object-fit:contain;
 padding:10px;
 background:#042a26;
-border-radius:8px;
+border-radius:10px;
 transition:.3s;
 }
 
 .logos img:hover{
 transform:scale(1.15);
 background:#064d44;
-}
-
-.diagram{
-margin-top:80px;
-background:#042a26;
-padding:40px;
-border-radius:10px;
-border:1px solid #064d44;
 }
 
 footer{
@@ -246,7 +238,15 @@ color:#7fd6c8;
 <body>
 
 <div class="lottie">
-<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="1" loop autoplay></lottie-player>
+
+<lottie-player
+src="https://assets9.lottiefiles.com/packages/lf20_qp1q7mct.json"
+background="transparent"
+speed="1"
+loop
+autoplay>
+</lottie-player>
+
 </div>
 
 <div class="overlay"></div>
@@ -325,20 +325,29 @@ HubSpot Super Admin and RevOps Architect building scalable marketing automation 
 
 <div class="logos">
 
-<img src="images/logos/microsoft.svg">
-<img src="images/logos/hubspot.svg">
-<img src="images/logos/zapier.svg">
-<img src="images/logos/N8n--Streamline-Simple-Icons.svg">
-<img src="images/logos/clickup.svg">
-<img src="images/logos/wrike.svg">
-<img src="images/logos/jira.svg">
-<img src="images/logos/zoho-1.svg">
-<img src="images/logos/canva-wordmark-2.svg">
-<img src="images/logos/meta-3.svg">
-<img src="images/logos/claude-logo.svg">
-<img src="images/logos/Clay Logo Light.png">
-<img src="images/logos/gohighlevel.png">
-<img src="images/logos/Lovable_Logo_0.svg">
+<img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg">
+
+<img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg">
+
+<img src="https://cdn.worldvectorlogo.com/logos/zapier.svg">
+
+<img src="https://cdn.worldvectorlogo.com/logos/clickup.svg">
+
+<img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg">
+
+<img src="images/N8n--Streamline-Simple-Icons.svg">
+
+<img src="images/zoho-1.svg">
+
+<img src="images/canva-wordmark-2.svg">
+
+<img src="images/meta-3.svg">
+
+<img src="images/claude-logo.svg">
+
+<img src="images/gohighlevel.png">
+
+<img src="images/Lovable_Logo_0.svg">
 
 </div>
 
@@ -378,15 +387,25 @@ document.getElementById("modal").classList.remove("active");
 }
 
 function reveal(){
+
 var reveals=document.querySelectorAll(".reveal");
+
 for(var i=0;i<reveals.length;i++){
+
 var windowHeight=window.innerHeight;
+
 var elementTop=reveals[i].getBoundingClientRect().top;
+
 var visible=120;
+
 if(elementTop<windowHeight-visible){
+
 reveals[i].classList.add("active");
+
 }
+
 }
+
 }
 
 window.addEventListener("scroll",reveal);
