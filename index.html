@@ -8,722 +8,208 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ─── RESET & BASE ───────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; font-size:16px; }
+html { scroll-behavior:smooth; }
 
 :root {
-  --bg:        #021a17;
-  --bg-2:      #031e1a;
-  --bg-card:   rgba(4, 45, 40, 0.55);
-  --border:    rgba(0,255,204,0.12);
-  --border-hover: rgba(0,255,204,0.45);
-  --accent:    #00ffcc;
-  --accent-dim:#00c9a0;
-  --text:      #e6fffa;
-  --text-muted:#7ec8bb;
-  --text-dim:  #4a9e90;
-  --glow:      0 0 40px rgba(0,255,204,0.18);
-  --glow-sm:   0 0 16px rgba(0,255,204,0.25);
-  --radius:    16px;
-  --radius-lg: 24px;
-  --transition: 0.35s cubic-bezier(0.25,0.8,0.25,1);
+  --bg:           #021a17;
+  --bg-2:         #031f1b;
+  --bg-card:      rgba(3,38,34,0.6);
+  --border:       rgba(0,255,204,0.1);
+  --border-hover: rgba(0,255,204,0.38);
+  --accent:       #00ffcc;
+  --accent-dim:   #00c9a0;
+  --text:         #e6fffa;
+  --text-muted:   #7ec8bb;
+  --text-dim:     #3e8a7e;
+  --glow:         0 8px 40px rgba(0,255,204,0.14);
+  --glow-sm:      0 0 14px rgba(0,255,204,0.28);
+  --r:            14px;
+  --r-lg:         20px;
+  --ease:         0.3s cubic-bezier(0.25,0.8,0.25,1);
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  font-size: 14px;
   line-height: 1.7;
 }
 
-/* ─── GRAIN TEXTURE ──────────────────────────────────────── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.028;
-  pointer-events: none;
-  z-index: 9999;
+body::after {
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.025;pointer-events:none;z-index:9999;
 }
 
-/* ─── AMBIENT GLOW ───────────────────────────────────────── */
-.ambient {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 0;
-}
-.ambient-1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(0,255,204,0.06) 0%, transparent 70%);
-  top: -100px; left: -150px;
-}
-.ambient-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(0,191,166,0.05) 0%, transparent 70%);
-  bottom: 10%; right: -100px;
-}
+.amb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+.amb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,255,204,.055) 0%,transparent 70%);top:-80px;left:-120px;}
+.amb-2{width:420px;height:420px;background:radial-gradient(circle,rgba(0,200,160,.04) 0%,transparent 70%);bottom:8%;right:-80px;}
 
-/* ─── NAVBAR ─────────────────────────────────────────────── */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 0 8%;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(2,26,23,0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  z-index: 1000;
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;height:62px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 7%;
+  background:rgba(2,22,19,.78);
+  backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--border);z-index:1000;
 }
+.nav-logo{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:7px;}
+.nav-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:var(--glow-sm);animation:blink 2.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;padding:5px 13px;border-radius:8px;transition:var(--ease);letter-spacing:.01em;}
+.nav-links a:hover{color:var(--accent);background:rgba(0,255,204,.06);}
+.nav-cta{background:var(--accent)!important;color:#021a17!important;font-weight:700!important;font-size:12px!important;letter-spacing:.03em!important;}
+.nav-cta:hover{background:var(--accent-dim)!important;transform:translateY(-1px);}
 
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 7% 80px;position:relative;overflow:hidden;}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,255,204,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,204,.025) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 75% 65% at 50% 50%,black 40%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 50%,black 40%,transparent 100%);
 }
-.nav-logo span {
-  display: inline-block;
-  width: 8px; height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: var(--glow-sm);
-}
+.hero-wrap{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;width:100%;max-width:1160px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;background:rgba(0,255,204,.07);border:1px solid rgba(0,255,204,.18);border-radius:100px;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;}
+.hero-badge::before{content:'';width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 2.2s ease-in-out infinite;}
+.hero-content h1{font-size:clamp(28px,3.8vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:6px;}
+.hero-content h1 em{font-style:normal;background:linear-gradient(130deg,#00ffcc 0%,#00d4ab 50%,#00b899 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-role{font-size:14px;font-weight:600;color:var(--text-muted);letter-spacing:.01em;margin-bottom:16px;}
+.hero-desc{font-size:13.5px;color:var(--text-muted);max-width:500px;line-height:1.85;margin-bottom:20px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px;}
+.tag{padding:3px 10px;border-radius:6px;background:rgba(0,255,204,.05);border:1px solid rgba(0,255,204,.12);font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:.02em;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:9px;background:var(--accent);color:#021a17;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.02em;transition:var(--ease);box-shadow:0 0 28px rgba(0,255,204,.22);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 34px rgba(0,255,204,.35);}
+.btn-o{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:9px;border:1px solid var(--border-hover);color:var(--text);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.02em;transition:var(--ease);}
+.btn-o:hover{background:rgba(0,255,204,.05);border-color:var(--accent);transform:translateY(-2px);}
 
-.nav-links { display: flex; align-items: center; gap: 8px; }
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 8px;
-  transition: var(--transition);
-  letter-spacing: 0.02em;
-}
-.nav-links a:hover { color: var(--accent); background: rgba(0,255,204,0.07); }
+/* profile */
+.hero-vis{position:relative;flex-shrink:0;}
+.p-ring{position:relative;width:200px;height:200px;}
+.p-ring::before,.p-ring::after{content:'';position:absolute;inset:-3px;border-radius:50%;}
+.p-ring::before{background:conic-gradient(from 0deg,var(--accent),transparent 55%,var(--accent));animation:spin 7s linear infinite;}
+.p-ring::after{background:conic-gradient(from 180deg,transparent 55%,var(--accent-dim));animation:spin 7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.p-img{position:relative;z-index:1;width:194px;height:194px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--bg);display:block;margin:3px;}
+.p-glow{position:absolute;inset:-28px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,204,.1) 0%,transparent 65%);z-index:0;}
 
-.nav-cta {
-  background: var(--accent) !important;
-  color: var(--bg) !important;
-  font-weight: 600 !important;
-}
-.nav-cta:hover { background: var(--accent-dim) !important; transform: translateY(-1px); }
+/* SHARED */
+section{padding:88px 7%;position:relative;z-index:1;}
+.s-label{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.s-label::before{content:'';width:18px;height:2px;background:var(--accent);border-radius:2px;}
+.s-title{font-size:clamp(20px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--text);margin-bottom:10px;}
+.s-sub{font-size:13.5px;color:var(--text-muted);max-width:500px;line-height:1.8;margin-bottom:48px;}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);}
 
-/* ─── HERO ───────────────────────────────────────────────── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 10% 80px;
-  position: relative;
-  overflow: hidden;
-}
+/* EXPERTISE */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
+.exp-item{background:var(--bg-card);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:var(--ease);display:flex;gap:14px;align-items:flex-start;}
+.exp-item:hover{border-color:var(--border-hover);transform:translateY(-4px);}
+.exp-icon{font-size:17px;width:38px;height:38px;border-radius:10px;background:rgba(0,255,204,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.exp-text h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.exp-text p{font-size:12px;color:var(--text-muted);line-height:1.65;}
 
-.hero-grid-lines {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,255,204,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,204,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
-}
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;}
+.proj-card{background:var(--bg-card);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:var(--ease);position:relative;}
+.proj-card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(0,255,204,.04) 0%,transparent 60%);opacity:0;transition:var(--ease);}
+.proj-card:hover{transform:translateY(-7px);border-color:var(--border-hover);box-shadow:var(--glow);}
+.proj-card:hover::before{opacity:1;}
+.proj-thumb{height:185px;overflow:hidden;position:relative;background:#031e1a;}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;}
+.proj-card:hover .proj-thumb img{transform:scale(1.05);}
+.proj-thumb-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,20,18,.65) 0%,transparent 52%);}
+.proj-body{padding:16px 18px 18px;}
+.proj-cat{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.proj-body h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.35;}
+.proj-body p{font-size:12px;color:var(--text-muted);line-height:1.65;margin-bottom:12px;}
+.proj-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;background:rgba(0,255,204,.06);border:1px solid rgba(0,255,204,.15);border-radius:100px;font-size:11px;font-weight:600;color:var(--accent);}
+.proj-tag::before{content:'↑';font-size:10px;}
 
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.93);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;z-index:3000;opacity:0;pointer-events:none;transition:opacity .28s ease;}
+.modal-ov.open{opacity:1;pointer-events:all;}
+.modal-ov img{max-width:min(90vw,1100px);max-height:86vh;border-radius:12px;box-shadow:0 0 60px rgba(0,255,204,.1);transform:scale(.94);transition:transform .38s cubic-bezier(.34,1.56,.64,1);}
+.modal-ov.open img{transform:scale(1);}
+.modal-x{position:absolute;top:18px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(0,255,204,.09);border:1px solid var(--border);color:var(--text);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--ease);}
+.modal-x:hover{background:rgba(0,255,204,.18);}
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(0,255,204,0.07);
-  border: 1px solid rgba(0,255,204,0.2);
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; transform: scale(1); }
-  50% { opacity:0.4; transform: scale(0.7); }
-}
+/* STACK */
+#stack{background:var(--bg-2);}
+.carousel-wrap{overflow:hidden;position:relative;padding:12px 0;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);}
+.logo-track{display:flex;align-items:center;gap:44px;animation:marquee 28s linear infinite;width:max-content;}
+.carousel-wrap:hover .logo-track{animation-play-state:paused;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.logo-item{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;}
+.logo-item img{height:26px;width:auto;max-width:78px;object-fit:contain;filter:brightness(.5) saturate(0);transition:filter .3s ease,transform .3s ease;}
+.carousel-wrap:hover .logo-item:hover img{filter:brightness(1) saturate(1);transform:scale(1.1);}
+.logo-item span{font-size:9px;color:var(--text-dim);letter-spacing:.07em;font-weight:600;white-space:nowrap;text-transform:uppercase;}
 
-.hero-content h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(40px, 5.5vw, 72px);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 10px;
-}
+/* METRICS */
+.met-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:16px;}
+.met-card{background:var(--bg-card);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 26px;position:relative;overflow:hidden;transition:var(--ease);}
+.met-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:var(--ease);}
+.met-card:hover{transform:translateY(-5px);border-color:var(--border-hover);}
+.met-card:hover::before{opacity:1;}
+.met-icon{width:36px;height:36px;border-radius:10px;background:rgba(0,255,204,.07);border:1px solid rgba(0,255,204,.13);display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px;}
+.met-num{font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dim) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;}
+.met-card h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.met-card p{font-size:12px;color:var(--text-muted);line-height:1.6;}
 
-.hero-content h1 em {
-  font-style: normal;
-  background: linear-gradient(135deg, #00ffcc 0%, #00e0b3 40%, #00bfa6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* CONTACT */
+#contact{background:var(--bg-2);}
+.contact-card{background:var(--bg-card);backdrop-filter:blur(22px);border:1px solid var(--border);border-radius:24px;padding:60px 52px;text-align:center;position:relative;overflow:hidden;max-width:700px;margin:0 auto;}
+.contact-card::before{content:'';position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:360px;height:240px;background:radial-gradient(ellipse,rgba(0,255,204,.08) 0%,transparent 70%);}
+.contact-card h2{font-size:clamp(18px,2.8vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.28;margin-bottom:12px;color:var(--text);}
+.contact-card p{font-size:13.5px;color:var(--text-muted);max-width:420px;margin:0 auto 28px;line-height:1.8;}
+.contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
-.hero-content h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.01em;
-  margin-bottom: 24px;
-}
+/* FOOTER */
+footer{padding:30px 7%;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.f-left{font-size:13px;font-weight:700;color:var(--text);}
+.f-left span{color:var(--accent);}
+.f-right{font-size:12px;color:var(--text-dim);}
 
-.hero-desc {
-  font-size: 17px;
-  color: var(--text-muted);
-  max-width: 560px;
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
 
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 36px;
+/* RESPONSIVE */
+@media(max-width:780px){
+  nav{padding:0 5%;}
+  .nav-links a:not(.nav-cta){display:none;}
+  section{padding:70px 5%;}
+  .hero{padding:96px 5% 54px;}
+  .hero-wrap{grid-template-columns:1fr;gap:34px;}
+  .hero-vis{order:-1;}
+  .p-ring{width:150px;height:150px;}
+  .p-img{width:144px;height:144px;}
+  .contact-card{padding:38px 22px;}
+  footer{flex-direction:column;text-align:center;}
 }
-.tag {
-  padding: 4px 12px;
-  border-radius: 6px;
-  background: rgba(0,255,204,0.06);
-  border: 1px solid rgba(0,255,204,0.14);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.03em;
-}
-
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #021a17;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  transition: var(--transition);
-  box-shadow: 0 0 30px rgba(0,255,204,0.25);
-}
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 40px rgba(0,255,204,0.38); }
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  border-radius: 10px;
-  border: 1px solid var(--border-hover);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  transition: var(--transition);
-}
-.btn-outline:hover { background: rgba(0,255,204,0.06); border-color: var(--accent); transform: translateY(-3px); }
-
-/* Profile visual */
-.hero-visual { position: relative; flex-shrink: 0; }
-.profile-ring {
-  position: relative;
-  width: 220px; height: 220px;
-}
-.profile-ring::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent), transparent 60%, var(--accent));
-  animation: spin 6s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.profile-ring::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: conic-gradient(from 180deg, transparent 60%, var(--accent-dim));
-  animation: spin 6s linear infinite;
-}
-.profile-img {
-  position: relative;
-  z-index: 1;
-  width: 214px; height: 214px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--bg);
-  display: block;
-  margin: 3px;
-}
-.profile-glow {
-  position: absolute;
-  inset: -30px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,255,204,0.12) 0%, transparent 65%);
-  z-index: 0;
-}
-
-/* ─── SECTIONS SHARED ────────────────────────────────────── */
-section { padding: 100px 10%; position: relative; z-index: 1; }
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-.section-label::before {
-  content: '';
-  width: 20px; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 3.5vw, 46px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-.section-sub {
-  font-size: 17px;
-  color: var(--text-muted);
-  max-width: 560px;
-  line-height: 1.75;
-  margin-bottom: 60px;
-}
-
-/* ─── DIVIDER ────────────────────────────────────────────── */
-.divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-
-/* ─── PROJECTS ───────────────────────────────────────────── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-}
-
-.project-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-.project-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(0,255,204,0.04) 0%, transparent 60%);
-  opacity: 0;
-  transition: var(--transition);
-}
-.project-card:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: var(--glow); }
-.project-card:hover::before { opacity: 1; }
-
-.project-thumb {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-.project-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.project-card:hover .project-thumb img { transform: scale(1.06); }
-.project-thumb-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(2,26,23,0.7) 0%, transparent 55%);
-}
-
-.project-body { padding: 22px 24px 24px; }
-.project-category {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-.project-body h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.project-body p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-.project-result {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  background: rgba(0,255,204,0.07);
-  border: 1px solid rgba(0,255,204,0.16);
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-}
-.project-result::before { content: '↑'; font-size: 11px; }
-
-/* ─── MODAL ──────────────────────────────────────────────── */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(12px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal-overlay img {
-  max-width: min(92vw, 1100px);
-  max-height: 88vh;
-  border-radius: 14px;
-  box-shadow: 0 0 80px rgba(0,255,204,0.12);
-  transform: scale(0.95);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.modal-overlay.open img { transform: scale(1); }
-.modal-close {
-  position: absolute;
-  top: 20px; right: 24px;
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  background: rgba(0,255,204,0.1);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: var(--transition);
-}
-.modal-close:hover { background: rgba(0,255,204,0.2); }
-
-/* ─── TECH STACK ─────────────────────────────────────────── */
-#stack { background: var(--bg-2); }
-
-.logo-carousel {
-  overflow: hidden;
-  position: relative;
-  padding: 10px 0;
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-}
-.logo-track {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  animation: marquee 28s linear infinite;
-  width: max-content;
-}
-.logo-carousel:hover .logo-track { animation-play-state: paused; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-.logo-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.logo-item img {
-  height: 36px;
-  width: auto;
-  max-width: 90px;
-  object-fit: contain;
-  filter: brightness(0.7) saturate(0);
-  transition: filter 0.3s ease, transform 0.3s ease;
-}
-.logo-carousel:hover .logo-item:hover img {
-  filter: brightness(1) saturate(1);
-  transform: scale(1.1);
-}
-.logo-item span {
-  font-size: 10px;
-  color: var(--text-dim);
-  letter-spacing: 0.06em;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-/* ─── METRICS ────────────────────────────────────────────── */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin-top: 20px;
-}
-.metric-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 32px;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition);
-}
-.metric-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0;
-  transition: var(--transition);
-}
-.metric-card:hover { transform: translateY(-6px); border-color: var(--border-hover); }
-.metric-card:hover::before { opacity: 1; }
-
-.metric-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: rgba(0,255,204,0.08);
-  border: 1px solid rgba(0,255,204,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-.metric-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 52px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-.metric-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-.metric-card p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* ─── EXPERTISE ──────────────────────────────────────────── */
-.expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-.expertise-item {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  transition: var(--transition);
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-}
-.expertise-item:hover { border-color: var(--border-hover); transform: translateY(-4px); }
-.expertise-icon {
-  font-size: 22px;
-  width: 46px; height: 46px;
-  border-radius: 12px;
-  background: rgba(0,255,204,0.07);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.expertise-text h4 {
-  font-family: 'Syne', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-.expertise-text p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-
-/* ─── CONTACT ────────────────────────────────────────────── */
-#contact { background: var(--bg-2); }
-.contact-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 72px 64px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  max-width: 780px;
-  margin: 0 auto;
-}
-.contact-card::before {
-  content: '';
-  position: absolute;
-  top: -80px; left: 50%;
-  transform: translateX(-50%);
-  width: 400px; height: 300px;
-  background: radial-gradient(ellipse, rgba(0,255,204,0.08) 0%, transparent 70%);
-}
-.contact-card h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(26px, 3.5vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 18px;
-  color: var(--text);
-}
-.contact-card p {
-  font-size: 17px;
-  color: var(--text-muted);
-  max-width: 480px;
-  margin: 0 auto 38px;
-  line-height: 1.75;
-}
-.contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-/* ─── FOOTER ─────────────────────────────────────────────── */
-footer {
-  padding: 40px 10%;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.footer-left {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text);
-}
-.footer-left span { color: var(--accent); }
-.footer-right { font-size: 13px; color: var(--text-dim); }
-
-/* ─── REVEAL ─────────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.active { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-
-/* ─── MOBILE ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  nav { padding: 0 5%; }
-  .nav-links a { display: none; }
-  .nav-links a.nav-cta { display: inline-flex; }
-  section { padding: 80px 6%; }
-  .hero { padding: 100px 6% 60px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-visual { order: -1; }
-  .profile-ring { width: 160px; height: 160px; }
-  .profile-img { width: 154px; height: 154px; }
-  .contact-card { padding: 48px 28px; }
-  footer { flex-direction: column; text-align: center; }
-}
-
-/* ─── SCROLLBAR ──────────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 10px; }
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--text-dim);border-radius:10px;}
 </style>
 </head>
-
 <body>
 
-<!-- Ambient glow orbs -->
-<div class="ambient ambient-1"></div>
-<div class="ambient ambient-2"></div>
+<div class="amb amb-1"></div>
+<div class="amb amb-2"></div>
 
-<!-- ─── NAVBAR ──────────────────────────────────────────── -->
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><span></span>Hashaam Tanveer</a>
+  <a href="#" class="nav-logo"><span class="nav-dot"></span>Hashaam Tanveer</a>
   <div class="nav-links">
     <a href="#expertise">Expertise</a>
     <a href="#projects">Work</a>
@@ -733,46 +219,39 @@ footer {
   </div>
 </nav>
 
-<!-- ─── HERO ────────────────────────────────────────────── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-grid-lines"></div>
-  <div class="hero-inner">
+  <div class="hero-grid"></div>
+  <div class="hero-wrap">
     <div class="hero-content reveal">
       <div class="hero-badge">Available for Projects</div>
       <h1>Hashaam<br><em>Tanveer</em></h1>
-      <h2>AI & Automation Systems Architect</h2>
-      <p class="hero-desc">
-        I design and engineer intelligent CRM architectures, marketing automation systems, and revenue operations infrastructure that scale businesses globally.
-      </p>
+      <p class="hero-role">AI & Automation Systems Architect</p>
+      <p class="hero-desc">I design and engineer intelligent CRM architectures, marketing automation systems, and revenue operations infrastructure that scale businesses globally.</p>
       <div class="hero-tags">
         <span class="tag">HubSpot CRM</span>
-        <span class="tag">n8n Automations</span>
+        <span class="tag">n8n</span>
         <span class="tag">Zapier</span>
         <span class="tag">Dynamics 365</span>
         <span class="tag">ClickUp</span>
-        <span class="tag">Revenue Operations</span>
+        <span class="tag">Revenue Ops</span>
         <span class="tag">Workflow Engineering</span>
       </div>
-      <div class="hero-actions">
-        <a href="Hashaam_Tanveer_Resume.pdf" class="btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <div class="hero-btns">
+        <a href="Hashaam_Tanveer_Resume.pdf" class="btn-p">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Resume
         </a>
-        <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="btn-outline">
-          LinkedIn Profile →
-        </a>
+        <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="btn-o">LinkedIn →</a>
       </div>
     </div>
-
-    <div class="hero-visual reveal reveal-delay-2">
-      <div class="profile-glow"></div>
-      <div class="profile-ring">
-        <img
-          class="profile-img"
+    <div class="hero-vis reveal d2">
+      <div class="p-glow"></div>
+      <div class="p-ring">
+        <img class="p-img"
           src="images/Hashaam pic.png"
-          onerror="this.src='https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&fit=crop&crop=face'"
-          alt="Hashaam Tanveer"
-        >
+          onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces'"
+          alt="Hashaam Tanveer">
       </div>
     </div>
   </div>
@@ -780,170 +259,109 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── EXPERTISE ───────────────────────────────────────── -->
+<!-- EXPERTISE -->
 <section id="expertise">
   <div class="reveal">
-    <div class="section-label">Expertise</div>
-    <h2 class="section-title">What I Build</h2>
-    <p class="section-sub">End-to-end automation infrastructure designed to eliminate manual work, accelerate pipelines, and unlock revenue at scale.</p>
+    <div class="s-label">Expertise</div>
+    <h2 class="s-title">What I Build</h2>
+    <p class="s-sub">End-to-end automation infrastructure engineered to eliminate manual work, accelerate pipelines, and scale revenue operations globally.</p>
   </div>
-  <div class="expertise-grid">
-    <div class="expertise-item reveal reveal-delay-1">
-      <div class="expertise-icon">🏗️</div>
-      <div class="expertise-text">
-        <h4>CRM Architecture</h4>
-        <p>Designing scalable HubSpot & Dynamics 365 CRM systems with structured data models and clean pipelines.</p>
-      </div>
-    </div>
-    <div class="expertise-item reveal reveal-delay-2">
-      <div class="expertise-icon">⚙️</div>
-      <div class="expertise-text">
-        <h4>Workflow Automation</h4>
-        <p>Building complex automation flows in n8n and Zapier that handle lead routing, scoring, and lifecycle triggers.</p>
-      </div>
-    </div>
-    <div class="expertise-item reveal reveal-delay-3">
-      <div class="expertise-icon">📊</div>
-      <div class="expertise-text">
-        <h4>Marketing Systems</h4>
-        <p>Engineering full-funnel campaign automation — webinar sequences, nurture workflows, and re-engagement programs.</p>
-      </div>
-    </div>
-    <div class="expertise-item reveal reveal-delay-1">
-      <div class="expertise-icon">🔗</div>
-      <div class="expertise-text">
-        <h4>Systems Integration</h4>
-        <p>Connecting CRMs, ad platforms, project tools, and data warehouses into seamless revenue operations stacks.</p>
-      </div>
-    </div>
-    <div class="expertise-item reveal reveal-delay-2">
-      <div class="expertise-icon">📋</div>
-      <div class="expertise-text">
-        <h4>Project Workspace Setup</h4>
-        <p>Architecting ClickUp and Wrike environments with structured templates, dashboards, and automated status updates.</p>
-      </div>
-    </div>
-    <div class="expertise-item reveal reveal-delay-3">
-      <div class="expertise-icon">🌏</div>
-      <div class="expertise-text">
-        <h4>Global RevOps Infrastructure</h4>
-        <p>Systems supporting multi-region operations across US, UK, Australia and Canada markets simultaneously.</p>
-      </div>
-    </div>
+  <div class="exp-grid">
+    <div class="exp-item reveal d1"><div class="exp-icon">🏗️</div><div class="exp-text"><h4>CRM Architecture</h4><p>Scalable HubSpot & Dynamics 365 data models with structured pipelines and lifecycle stages.</p></div></div>
+    <div class="exp-item reveal d2"><div class="exp-icon">⚙️</div><div class="exp-text"><h4>Workflow Automation</h4><p>Complex n8n and Zapier flows handling lead routing, scoring, and lifecycle event triggers.</p></div></div>
+    <div class="exp-item reveal d3"><div class="exp-icon">📊</div><div class="exp-text"><h4>Marketing Systems</h4><p>Full-funnel campaign automation — webinar sequences, nurture workflows, and re-engagement programs.</p></div></div>
+    <div class="exp-item reveal d1"><div class="exp-icon">🔗</div><div class="exp-text"><h4>Systems Integration</h4><p>Connecting CRMs, ad platforms, project tools, and data warehouses into unified RevOps stacks.</p></div></div>
+    <div class="exp-item reveal d2"><div class="exp-icon">📋</div><div class="exp-text"><h4>Project Workspace Setup</h4><p>ClickUp and Wrike environments with structured templates, dashboards, and auto-triggered updates.</p></div></div>
+    <div class="exp-item reveal d3"><div class="exp-icon">🌏</div><div class="exp-text"><h4>Global RevOps Infrastructure</h4><p>Multi-region systems supporting US, UK, Australia, and Canadian market teams simultaneously.</p></div></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ─── PROJECTS ────────────────────────────────────────── -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="reveal">
-    <div class="section-label">Case Studies</div>
-    <h2 class="section-title">Automation Systems Built</h2>
-    <p class="section-sub">A selection of real automation infrastructure built across CRM, marketing, and operations — each delivering measurable business outcomes.</p>
+    <div class="s-label">Case Studies</div>
+    <h2 class="s-title">Automation Systems Built</h2>
+    <p class="s-sub">Real automation infrastructure built across CRM, marketing, and operations — each with measurable business outcomes.</p>
   </div>
+  <div class="proj-grid">
 
-  <div class="projects-grid">
-
-    <div class="project-card reveal reveal-delay-1" onclick="openModal('images/Dashboard HubSpot.png','https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/Dashboard HubSpot.png"
-          onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'"
-          alt="HubSpot Analytics Dashboard"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d1" onclick="openModal('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="HubSpot Analytics Dashboard" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">HubSpot · Analytics</div>
+      <div class="proj-body">
+        <div class="proj-cat">HubSpot · Analytics</div>
         <h3>HubSpot Analytics Dashboard</h3>
         <p>Custom CRM reporting dashboard consolidating pipeline metrics, email performance, and lead attribution into a single executive view.</p>
-        <span class="project-result">Real-time pipeline visibility</span>
+        <span class="proj-tag">Real-time pipeline visibility</span>
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2" onclick="openModal('images/Lead pass Workflow.png','https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/Lead pass Workflow.png"
-          onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'"
-          alt="Lead Routing Automation"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d2" onclick="openModal('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Lead Routing Automation" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">HubSpot · Lead Management</div>
+      <div class="proj-body">
+        <div class="proj-cat">HubSpot · Lead Management</div>
         <h3>Intelligent Lead Routing Automation</h3>
-        <p>Multi-branch lead assignment workflow scoring and routing inbound leads to the right rep based on region, source, and deal value.</p>
-        <span class="project-result">30% reduction in manual assignment</span>
+        <p>Multi-branch assignment workflow scoring and routing inbound leads by region, source, and deal value to the right rep.</p>
+        <span class="proj-tag">30% reduction in manual assignment</span>
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-3" onclick="openModal('images/Webinar wf.png','https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/Webinar wf.png"
-          onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80'"
-          alt="Webinar Lifecycle Workflow"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d3" onclick="openModal('https://images.unsplash.com/photo-1587620962725-abab19836100?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1587620962725-abab19836100?w=700&q=80" alt="Webinar Lifecycle Workflow" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">HubSpot · Marketing</div>
+      <div class="proj-body">
+        <div class="proj-cat">HubSpot · Marketing Automation</div>
         <h3>Webinar Lifecycle Workflow</h3>
-        <p>End-to-end automated sequence handling webinar registration, reminders, attendance tracking, and post-event nurture paths.</p>
-        <span class="project-result">Fully automated attendee journey</span>
+        <p>End-to-end automated sequence handling registration, reminders, attendance tracking, and post-event nurture paths.</p>
+        <span class="proj-tag">Fully automated attendee journey</span>
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-1" onclick="openModal('images/Education Campaign.png','https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/Education Campaign.png"
-          onerror="this.src='https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&q=80'"
-          alt="Education Campaign System"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d1" onclick="openModal('https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="Education Campaign System" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">HubSpot · Campaigns</div>
+      <div class="proj-body">
+        <div class="proj-cat">HubSpot · Campaigns</div>
         <h3>Education Campaign System</h3>
         <p>Multi-touch drip campaign system for education verticals with conditional branching based on content engagement and lead stage.</p>
-        <span class="project-result">Personalised multi-touch nurture</span>
+        <span class="proj-tag">Personalised multi-touch nurture</span>
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2" onclick="openModal('images/wrike1.png','https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/wrike1.png"
-          onerror="this.src='https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&q=80'"
-          alt="Wrike Workspace Setup"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d2" onclick="openModal('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Wrike Workspace" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">Wrike · Project Management</div>
+      <div class="proj-body">
+        <div class="proj-cat">Wrike · Project Management</div>
         <h3>Wrike Workspace Architecture</h3>
-        <p>Complete Wrike workspace buildout with custom workflows, space hierarchies, dashboards and automated status update triggers.</p>
-        <span class="project-result">Standardised team operations</span>
+        <p>Complete workspace buildout with custom workflows, space hierarchies, dashboards, and automated status update triggers.</p>
+        <span class="proj-tag">Standardised team operations</span>
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-3" onclick="openModal('images/wrike2.png','https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80')">
-      <div class="project-thumb">
-        <img
-          src="images/wrike2.png"
-          onerror="this.src='https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80'"
-          alt="Wrike Workflow Architecture"
-        >
-        <div class="project-thumb-overlay"></div>
+    <div class="proj-card reveal d3" onclick="openModal('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=90')">
+      <div class="proj-thumb">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="n8n Workflow Automation" loading="lazy">
+        <div class="proj-thumb-ov"></div>
       </div>
-      <div class="project-body">
-        <div class="project-category">Wrike · Automation</div>
-        <h3>Wrike Workflow Automation</h3>
-        <p>Automated workflow rules and cross-project dependency management enabling complex multi-team campaign delivery tracking.</p>
-        <span class="project-result">Zero manual status updates</span>
+      <div class="proj-body">
+        <div class="proj-cat">n8n · Automation</div>
+        <h3>n8n Workflow Automation System</h3>
+        <p>Cross-system data pipelines connecting CRM, email, ad platforms, and internal tools without code — fully automated triggers.</p>
+        <span class="proj-tag">Zero manual status updates</span>
       </div>
     </div>
 
@@ -952,170 +370,69 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── TECH STACK ──────────────────────────────────────── -->
+<!-- STACK -->
 <section id="stack">
-  <div class="reveal" style="text-align:center; margin-bottom: 60px;">
-    <div class="section-label" style="justify-content:center; display:flex;">Technology Stack</div>
-    <h2 class="section-title" style="text-align:center; max-width:600px; margin:0 auto 14px;">Tools I Build With</h2>
-    <p class="section-sub" style="text-align:center; margin: 0 auto;">Enterprise-grade automation and CRM platforms I use to architect and deploy systems at scale.</p>
+  <div class="reveal" style="text-align:center;margin-bottom:48px;">
+    <div class="s-label" style="justify-content:center;display:flex;">Technology Stack</div>
+    <h2 class="s-title" style="text-align:center;max-width:520px;margin:0 auto 10px;">Tools I Build With</h2>
+    <p class="s-sub" style="text-align:center;margin:0 auto;">Enterprise-grade automation and CRM platforms powering the systems I architect at scale.</p>
   </div>
-
-  <div class="logo-carousel reveal">
-    <div class="logo-track" id="logoTrack">
-
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot"
-             onerror="this.style.display='none'">
-        <span>HubSpot</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"
-             onerror="this.style.display='none'">
-        <span>Microsoft</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier"
-             onerror="this.style.display='none'">
-        <span>Zapier</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI"
-             onerror="this.style.display='none'">
-        <span>OpenAI</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira"
-             onerror="this.style.display='none'">
-        <span>Jira</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/zoho-1.svg" alt="Zoho"
-             onerror="this.style.display='none'">
-        <span>Zoho</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/meta-3.svg" alt="Meta"
-             onerror="this.style.display='none'">
-        <span>Meta</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" alt="Canva"
-             onerror="this.style.display='none'">
-        <span>Canva</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n"
-             onerror="this.style.display='none'">
-        <span>n8n</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp"
-             onerror="this.style.display='none'">
-        <span>ClickUp</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/id6O2oGzv-/theme/dark/idhg2vnQYV.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Wrike"
-             onerror="this.style.display='none'">
-        <span>Wrike</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/id48ThYNEO/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Dynamics 365"
-             onerror="this.style.display='none'">
-        <span>Dynamics 365</span>
-      </div>
-
-      <!-- Duplicate for seamless loop -->
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot"
-             onerror="this.style.display='none'">
-        <span>HubSpot</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"
-             onerror="this.style.display='none'">
-        <span>Microsoft</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier"
-             onerror="this.style.display='none'">
-        <span>Zapier</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI"
-             onerror="this.style.display='none'">
-        <span>OpenAI</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira"
-             onerror="this.style.display='none'">
-        <span>Jira</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/zoho-1.svg" alt="Zoho"
-             onerror="this.style.display='none'">
-        <span>Zoho</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/meta-3.svg" alt="Meta"
-             onerror="this.style.display='none'">
-        <span>Meta</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" alt="Canva"
-             onerror="this.style.display='none'">
-        <span>Canva</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n"
-             onerror="this.style.display='none'">
-        <span>n8n</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp"
-             onerror="this.style.display='none'">
-        <span>ClickUp</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/id6O2oGzv-/theme/dark/idhg2vnQYV.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Wrike"
-             onerror="this.style.display='none'">
-        <span>Wrike</span>
-      </div>
-      <div class="logo-item">
-        <img src="https://cdn.brandfetch.io/id48ThYNEO/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Dynamics 365"
-             onerror="this.style.display='none'">
-        <span>Dynamics 365</span>
-      </div>
-
+  <div class="carousel-wrap reveal">
+    <div class="logo-track">
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/hubspot/00ffcc" alt="HubSpot"><span>HubSpot</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/zapier/00ffcc" alt="Zapier"><span>Zapier</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/n8n/00ffcc" alt="n8n"><span>n8n</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/clickup/00ffcc" alt="ClickUp"><span>ClickUp</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/microsoftazure/00ffcc" alt="Microsoft"><span>Microsoft</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/openai/00ffcc" alt="OpenAI"><span>OpenAI</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/jira/00ffcc" alt="Jira"><span>Jira</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/zoho/00ffcc" alt="Zoho"><span>Zoho</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/meta/00ffcc" alt="Meta"><span>Meta</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/canva/00ffcc" alt="Canva"><span>Canva</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/dynamics365/00ffcc" alt="Dynamics 365" onerror="this.src='https://cdn.simpleicons.org/microsoft/00ffcc'"><span>Dynamics 365</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/wrike/00ffcc" alt="Wrike" onerror="this.src='https://cdn.simpleicons.org/asana/00ffcc'"><span>Wrike</span></div>
+      <!-- duplicate -->
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/hubspot/00ffcc" alt="HubSpot"><span>HubSpot</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/zapier/00ffcc" alt="Zapier"><span>Zapier</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/n8n/00ffcc" alt="n8n"><span>n8n</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/clickup/00ffcc" alt="ClickUp"><span>ClickUp</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/microsoftazure/00ffcc" alt="Microsoft"><span>Microsoft</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/openai/00ffcc" alt="OpenAI"><span>OpenAI</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/jira/00ffcc" alt="Jira"><span>Jira</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/zoho/00ffcc" alt="Zoho"><span>Zoho</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/meta/00ffcc" alt="Meta"><span>Meta</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/canva/00ffcc" alt="Canva"><span>Canva</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/dynamics365/00ffcc" alt="Dynamics 365" onerror="this.src='https://cdn.simpleicons.org/microsoft/00ffcc'"><span>Dynamics 365</span></div>
+      <div class="logo-item"><img src="https://cdn.simpleicons.org/wrike/00ffcc" alt="Wrike" onerror="this.src='https://cdn.simpleicons.org/asana/00ffcc'"><span>Wrike</span></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ─── IMPACT ──────────────────────────────────────────── -->
+<!-- IMPACT -->
 <section id="impact">
   <div class="reveal">
-    <div class="section-label">Business Impact</div>
-    <h2 class="section-title">Results That Matter</h2>
-    <p class="section-sub">Every system I build is measured against real outcomes — less manual work, faster pipelines, and compounding efficiency gains.</p>
+    <div class="s-label">Business Impact</div>
+    <h2 class="s-title">Results That Matter</h2>
+    <p class="s-sub">Every system is measured against real outcomes — less manual work, faster pipelines, and compounding efficiency gains.</p>
   </div>
-
-  <div class="metrics-grid">
-    <div class="metric-card reveal reveal-delay-1">
-      <div class="metric-icon">⚡</div>
-      <div class="metric-num" data-target="25" data-suffix="+">0</div>
+  <div class="met-grid">
+    <div class="met-card reveal d1">
+      <div class="met-icon">⚡</div>
+      <div class="met-num" data-target="25" data-suffix="+">0</div>
       <h3>Automation Workflows Built</h3>
       <p>CRM, marketing, and operations workflows designed and deployed across production environments.</p>
     </div>
-    <div class="metric-card reveal reveal-delay-2">
-      <div class="metric-icon">📉</div>
-      <div class="metric-num" data-target="30" data-suffix="%">0</div>
+    <div class="met-card reveal d2">
+      <div class="met-icon">📉</div>
+      <div class="met-num" data-target="30" data-suffix="%">0</div>
       <h3>Reduction in Manual Work</h3>
       <p>Measurable decrease in manual lead assignment time after implementing intelligent routing automation.</p>
     </div>
-    <div class="metric-card reveal reveal-delay-3">
-      <div class="metric-icon">🌍</div>
-      <div class="metric-num" data-target="4" data-suffix=" Markets">0</div>
+    <div class="met-card reveal d3">
+      <div class="met-icon">🌍</div>
+      <div class="met-num" data-target="4" data-suffix=" Markets">0</div>
       <h3>Global Markets Supported</h3>
       <p>Systems actively running operations across US, UK, Australia, and Canadian market teams.</p>
     </div>
@@ -1124,101 +441,64 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── CONTACT ─────────────────────────────────────────── -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-card reveal">
     <h2>Let's build intelligent automation systems that scale your business.</h2>
-    <p>Whether you're scaling a CRM, untangling a broken workflow, or building revenue operations from the ground up — I'm ready to engineer it.</p>
-    <div class="contact-actions">
-      <a href="mailto:hashaamtanveerk@gmail.com" class="btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <p>Whether you're scaling a CRM, untangling a broken workflow, or building revenue operations from scratch — I'll engineer it right.</p>
+    <div class="contact-btns">
+      <a href="mailto:hashaamtanveerk@gmail.com" class="btn-p">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Send a Message
       </a>
-      <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="btn-outline">
-        Connect on LinkedIn →
-      </a>
+      <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="btn-o">Connect on LinkedIn →</a>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ───────────────────────────────────────────── -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-left">Hashaam Tanveer <span>·</span> AI & Automation Systems Architect</div>
-  <div class="footer-right">© 2026 — Built with precision.</div>
+  <div class="f-left">Hashaam Tanveer <span>·</span> AI & Automation Systems Architect</div>
+  <div class="f-right">© 2026 — Built with precision.</div>
 </footer>
 
-<!-- ─── MODAL ────────────────────────────────────────────── -->
-<div class="modal-overlay" id="modal" onclick="closeModal()">
-  <button class="modal-close" onclick="closeModal()">✕</button>
-  <img id="modal-img" src="" alt="Case study preview">
+<!-- MODAL -->
+<div class="modal-ov" id="modal" onclick="closeModal()">
+  <button class="modal-x" onclick="closeModal()">✕</button>
+  <img id="modal-img" src="" alt="Case study">
 </div>
 
-<!-- ─── JS ──────────────────────────────────────────────── -->
 <script>
-/* Modal */
-function openModal(primary, fallback) {
-  const modal = document.getElementById('modal');
-  const img   = document.getElementById('modal-img');
-  img.src = primary;
-  img.onerror = () => { img.src = fallback; };
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+function openModal(src){
+  document.getElementById('modal-img').src=src;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function closeModal() {
+function closeModal(){
   document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-/* Scroll reveal */
-function handleReveal() {
-  document.querySelectorAll('.reveal').forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) el.classList.add('active');
+function checkReveal(){
+  document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-70)el.classList.add('vis');
   });
 }
-window.addEventListener('scroll', handleReveal, { passive: true });
-handleReveal();
+window.addEventListener('scroll',checkReveal,{passive:true});
+checkReveal();
 
-/* Counter animation */
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1800;
-  const step = target / (duration / 16);
-  let current = 0;
-  const timer = setInterval(() => {
-    current = Math.min(current + step, target);
-    el.textContent = Math.floor(current) + suffix;
-    if (current >= target) clearInterval(timer);
-  }, 16);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.dataset.animated) {
-      entry.target.dataset.animated = 'true';
-      animateCounter(entry.target);
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.done){
+      e.target.dataset.done='1';
+      const t=parseInt(e.target.dataset.target),s=e.target.dataset.suffix||'';
+      let c=0,step=t/(1600/16);
+      const id=setInterval(()=>{c=Math.min(c+step,t);e.target.textContent=Math.floor(c)+s;if(c>=t)clearInterval(id);},16);
     }
   });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
-
-/* Navbar active state */
-const sections = document.querySelectorAll('section[id]');
-const navLinks  = document.querySelectorAll('.nav-links a[href^="#"]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current
-      ? 'var(--accent)' : '';
-  });
-}, { passive: true });
+},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
