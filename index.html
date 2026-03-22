@@ -3,290 +3,528 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Systems — Hashaam Tanveer</title>
-  <meta name="description" content="We build intelligent AI systems. From idea to scalable product to automation.">
+  <title>Hashaam Tanveer — Automation & CRM Systems Architect</title>
+  <meta name="description" content="Automation architect specialising in CRM systems, HubSpot, n8n, Zapier, ClickUp, Wrike and Jira — building revenue operations infrastructure for global teams.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- CDN Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div class="loader">
-    <div class="loader-logo">HT.</div>
-    <div class="loader-bar-track"><div class="loader-bar"></div></div>
+<!-- ═══════ BACKGROUNDS ═══════ -->
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="bg-grid"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+
+  <!-- Left -->
+  <div class="nav-left">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo">H</div>
+      <span class="nav-name">Hashaam Tanveer</span>
+    </a>
+    <span class="nav-vsep"></span>
+    <div class="nav-ghost">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="mailto:hashaamtanveerk@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank">LinkedIn</a>
+    </div>
   </div>
 
-  <!-- Page Transition Overlay -->
-  <div class="page-transition"></div>
-
-  <!-- Custom Cursor -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-
-  <!-- WebGL Background -->
-  <canvas id="webgl-bg"></canvas>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo"><span>HT.</span></a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="stack.html" class="nav-link">Stack</a>
-      <a href="systems.html" class="nav-link">Systems</a>
-      <a href="diagrams.html" class="nav-link">Diagrams</a>
-      <div class="magnetic"><a href="#contact" class="nav-cta">Start Project</a></div>
+  <!-- Center pill -->
+  <div class="nav-center">
+    <div class="nav-pill">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+      <a href="#impact">Impact</a>
     </div>
-    <div class="nav-toggle" aria-label="Menu">
+  </div>
+
+  <!-- Right -->
+  <div class="nav-right">
+    <div class="nav-avail">
+      <span class="avail-dot"></span>
+      <span>Available</span>
+    </div>
+    <a href="#contact" class="nav-cta">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      Hire Me
+    </a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation" onclick="toggleDrawer()">
       <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <!-- ========================= HERO ========================= -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Accepting new projects
-      </div>
-      <h1>
-        Building<br>
-        <span class="gradient-text">Intelligent</span><br>
-        Systems
-      </h1>
-      <p class="hero-subtitle">
-        We architect autonomous AI agents, automation pipelines, and scalable 
-        infrastructure — from concept to production.
-      </p>
-      <div class="hero-actions">
-        <div class="magnetic">
-          <a href="systems.html" class="btn-primary page-link">
-            View Case Studies
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-        <div class="magnetic">
-          <a href="stack.html" class="btn-secondary page-link">
-            Explore Stack
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ========================= SERVICES ========================= -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-label">What We Build</div>
-        <h2 class="section-title">Intelligent systems that<br>scale with your business</h2>
-        <p class="section-desc">
-          We don't just write code — we engineer autonomous systems that think, 
-          adapt, and execute at scale.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card" data-cursor>
-          <div class="service-icon">⚡</div>
-          <h3>AI Agents</h3>
-          <p>Autonomous agents that reason, plan, and execute complex multi-step tasks using advanced LLM orchestration and tool integration.</p>
-        </div>
-        <div class="service-card" data-cursor>
-          <div class="service-icon">🔄</div>
-          <h3>Automation Pipelines</h3>
-          <p>End-to-end workflow automation that eliminates manual processes, reduces errors, and accelerates your operations by 10x.</p>
-        </div>
-        <div class="service-card" data-cursor>
-          <div class="service-icon">🏗️</div>
-          <h3>Scalable Architecture</h3>
-          <p>Production-grade system design with microservices, event-driven patterns, and cloud-native infrastructure built to handle millions.</p>
-        </div>
-        <div class="service-card" data-cursor>
-          <div class="service-icon">🧠</div>
-          <h3>RAG Systems</h3>
-          <p>Retrieval-augmented generation pipelines that give your AI systems access to your proprietary data with precision and speed.</p>
-        </div>
-        <div class="service-card" data-cursor>
-          <div class="service-icon">📊</div>
-          <h3>Data Engineering</h3>
-          <p>Robust data pipelines, ETL workflows, and real-time processing systems that turn raw data into actionable intelligence.</p>
-        </div>
-        <div class="service-card" data-cursor>
-          <div class="service-icon">🚀</div>
-          <h3>MLOps & Deployment</h3>
-          <p>Continuous model training, evaluation, and deployment infrastructure with monitoring, A/B testing, and automated rollbacks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= STATS ========================= -->
-  <section class="section">
-    <div class="container">
-      <div class="stats-row">
-        <div class="stat-item">
-          <div class="stat-number" data-count="50" data-suffix="+">0</div>
-          <div class="stat-label">Systems Deployed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="12" data-suffix="">0</div>
-          <div class="stat-label">AI Agents Built</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="99" data-suffix="%">0</div>
-          <div class="stat-label">Uptime SLA</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="10" data-suffix="x">0</div>
-          <div class="stat-label">Efficiency Gain</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= SCROLL STORY ========================= -->
-  <section class="scroll-story">
-    <div class="scroll-story-sticky">
-      <div class="container">
-        <div class="story-text">
-          <span class="word">We</span>
-          <span class="word">don't</span>
-          <span class="word">just</span>
-          <span class="word">build</span>
-          <span class="word">software.</span>
-          <span class="word">We</span>
-          <span class="word">engineer</span>
-          <span class="word">systems</span>
-          <span class="word">that</span>
-          <span class="word">think,</span>
-          <span class="word">adapt,</span>
-          <span class="word">and</span>
-          <span class="word">evolve</span>
-          <span class="word">—</span>
-          <span class="word">turning</span>
-          <span class="word">complexity</span>
-          <span class="word">into</span>
-          <span class="word">elegant</span>
-          <span class="word">automation.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= APPROACH ========================= -->
-  <section class="section" id="approach">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-label">Our Process</div>
-        <h2 class="section-title">From idea to production<br>in four phases</h2>
-      </div>
-
-      <div class="approach-steps">
-        <div class="approach-step">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h3>Discovery & Architecture</h3>
-            <p>We analyze your domain, map data flows, and design the system blueprint. Every decision is intentional — from database schema to API contracts.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h3>Rapid Prototyping</h3>
-            <p>We build a working prototype in days, not months. Fast iteration with real feedback loops — validating core assumptions before scaling.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h3>Production Engineering</h3>
-            <p>Battle-tested code, comprehensive testing, CI/CD pipelines, monitoring, and observability. Built to run without babysitting.</p>
-          </div>
-        </div>
-        <div class="approach-step">
-          <div class="step-num">04</div>
-          <div class="step-content">
-            <h3>Scale & Optimize</h3>
-            <p>Performance tuning, cost optimization, and horizontal scaling. Your system grows with your business — seamlessly.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= CTA ========================= -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <div class="reveal">
-        <h2>Ready to build<br><span class="gradient-text">something intelligent?</span></h2>
-        <p>Let's architect your next system together.</p>
-        <div class="hero-actions" style="opacity:1; transform:none;">
-          <div class="magnetic">
-            <a href="mailto:hashaam@example.com" class="btn-primary">
-              Get in Touch
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= FOOTER ========================= -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-brand"><span>HT.</span></div>
-      <p class="footer-text">Hashaam Tanveer — AI Systems Engineer</p>
-      <div class="footer-links">
-        <a href="index.html" class="page-link">Home</a>
-        <a href="stack.html" class="page-link">Stack</a>
-        <a href="systems.html" class="page-link">Systems</a>
-        <a href="diagrams.html" class="page-link">Diagrams</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ========================= AI ASSISTANT ========================= -->
-  <div class="ai-chat">
-    <div class="ai-chat-window">
-      <div class="ai-chat-header">
-        <div class="ai-avatar">AI</div>
-        <div class="ai-info">
-          <h4>AI Assistant</h4>
-          <span>Online</span>
-        </div>
-      </div>
-      <div class="ai-chat-messages">
-        <div class="ai-msg bot">Hey! 👋 I'm the AI assistant for HT. Systems. Ask me about services, projects, or the tech stack.</div>
-      </div>
-      <div class="ai-chat-input">
-        <input type="text" placeholder="Ask me anything...">
-        <button aria-label="Send">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 2L7 9M14 2l-5 12-2-5-5-2 12-5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="ai-chat-toggle" aria-label="Open AI Assistant">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 017 7v4a7 7 0 01-14 0V9a7 7 0 017-7z" stroke="currentColor" stroke-width="1.5"/><path d="M8 10h.01M16 10h.01M9 15a3 3 0 006 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-    </div>
+    </button>
   </div>
 
-  <script src="script.js"></script>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="drawer-links">
+    <a href="#work"   onclick="closeDrawer()">Work</a>
+    <a href="#stack"  onclick="closeDrawer()">Stack</a>
+    <a href="#about"  onclick="closeDrawer()">About</a>
+    <a href="#impact" onclick="closeDrawer()">Impact</a>
+  </div>
+  <div class="drawer-sep"></div>
+  <a href="#contact" class="drawer-cta" onclick="closeDrawer()">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    Hire Me
+  </a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-fade"></div>
+  <div class="hero-fade-b"></div>
+
+  <div class="hero-inner">
+
+    <!-- Left: text content -->
+    <div>
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        Open to freelance &amp; full-time roles
+      </div>
+
+      <h1 class="hero-h1">
+        <em>Automation</em>
+        <strong>Systems <span class="grad-text">Architect</span></strong>
+      </h1>
+
+      <div class="hero-typed-wrap">
+        <span class="hero-typed-static">Specialising in</span>
+        <span class="hero-typed" id="heroTyped"></span>
+      </div>
+
+      <p class="hero-desc">
+        I design CRM systems, marketing automation stacks, and workflow infrastructure that remove manual friction — giving revenue teams the clarity and speed to operate at scale.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-val">25+</div>
+          <div class="hstat-lbl">Workflows Built</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-val">30%</div>
+          <div class="hstat-lbl">Ops Time Saved</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-val">4</div>
+          <div class="hstat-lbl">Global Markets</div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#work" class="btn-primary">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          View Projects
+        </a>
+        <a href="Hashaam_Tanveer_Resume.pdf" target="_blank" class="btn-ghost">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a1 1 0 001 1h16a1 1 0 001-1v-3"/></svg>
+          Resume
+        </a>
+        <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="btn-ghost">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <!-- Trusted tools strip -->
+      <div class="hero-strip">
+        <div class="strip-label">Trusted tool stack</div>
+        <div class="strip-logos">
+          <div class="strip-logo"><img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot"></div>
+          <div class="strip-logo"><img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier"></div>
+          <div class="strip-logo"><img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n"></div>
+          <div class="strip-logo"><img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp"></div>
+          <div class="strip-logo"><img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"></div>
+          <div class="strip-logo"><img src="https://cdn.brandfetch.io/idYpJMnlBx/w/192/h/192/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Google"></div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        <span class="scroll-bounce">↓</span>
+        Scroll to explore
+      </div>
+    </div>
+
+    <!-- Right: profile card -->
+    <div>
+      <div class="hero-card">
+        <div class="card-avatar">
+          <img src="images/Hashaam pic.png" alt="Hashaam Tanveer">
+        </div>
+        <div class="card-name">Hashaam Tanveer</div>
+        <div class="card-role">AI &amp; Automation Systems Architect</div>
+        <div class="card-stats">
+          <div class="cs"><div class="cs-v">25+</div><div class="cs-l">Workflows Built</div></div>
+          <div class="cs"><div class="cs-v">4</div><div class="cs-l">Global Markets</div></div>
+          <div class="cs"><div class="cs-v">15+</div><div class="cs-l">Tools Connected</div></div>
+          <div class="cs"><div class="cs-v">30%</div><div class="cs-l">Ops Time Saved</div></div>
+        </div>
+        <div class="card-tools">
+          <span class="ctool">HubSpot</span>
+          <span class="ctool">n8n</span>
+          <span class="ctool">Zapier</span>
+          <span class="ctool">ClickUp</span>
+          <span class="ctool">Wrike</span>
+          <span class="ctool">Jira</span>
+        </div>
+        <div class="card-status">
+          <span class="sdot"></span>
+          Available for new projects
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     CASE STUDIES
+═══════════════════════════════════════════ -->
+<section class="section" id="work">
+  <div class="container">
+    <div class="eyebrow reveal"><span class="eyebrow-line"></span>Selected Work</div>
+    <h2 class="section-title reveal delay-1">Six real systems, each built<br><strong>to fix a specific bottleneck</strong></h2>
+    <p class="section-sub reveal delay-2">From CRM architecture to automated reporting — these projects span HubSpot, Zapier, n8n, Wrike, Jira, and ClickUp, each solving a concrete operational problem.</p>
+
+    <div class="work-grid">
+
+      <div class="wcard reveal delay-1" onclick="openModal('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=420&fit=crop&q=80" alt="HubSpot CRM dashboard" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">HubSpot</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">HubSpot Lead Nurture Workflow</div>
+          <div class="wcard-desc">Multi-branch contact workflow that auto-enrols leads by lifecycle stage, triggers personalised email sequences, and routes warm prospects directly to sales reps — no manual triage.</div>
+          <div class="wcard-metric">40% faster sales handoff</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+      <div class="wcard reveal delay-2" onclick="openModal('https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=700&h=420&fit=crop&q=80" alt="Zapier automation workflow" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">Zapier</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">Zapier Cross-Tool Data Sync</div>
+          <div class="wcard-desc">Zapier architecture connecting HubSpot, Slack, Google Sheets, and three internal tools — syncing records bi-directionally and triggering alerts the moment a deal advances or stalls.</div>
+          <div class="wcard-metric">Zero manual entry across 6 tools</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+      <div class="wcard reveal delay-3" onclick="openModal('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&h=420&fit=crop&q=80" alt="n8n automation pipeline" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">n8n</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">n8n Automated Reporting Pipeline</div>
+          <div class="wcard-desc">Self-hosted n8n workflow that pulls data from multiple APIs nightly, runs conditional formatting logic, and delivers a formatted Slack digest every morning — fully unattended.</div>
+          <div class="wcard-metric">12 hrs of reporting saved weekly</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+      <div class="wcard reveal delay-1" onclick="openModal('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&h=420&fit=crop&q=80" alt="Wrike project workspace" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">Wrike</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">Wrike Project Workflow Architecture</div>
+          <div class="wcard-desc">Full Wrike workspace redesign for a distributed marketing team — custom statuses, blueprint-based task creation, auto-assignments on project launch, and a live leadership dashboard.</div>
+          <div class="wcard-metric">35% reduction in delivery time</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+      <div class="wcard reveal delay-2" onclick="openModal('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&h=420&fit=crop&q=80" alt="Jira sprint board" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">Jira</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">Jira Sprint &amp; Support Issue Setup</div>
+          <div class="wcard-desc">Structured Jira board for a SaaS product team — custom issue types, automated sprint transitions, SLA tracking for support tickets, and two-way sync with Confluence documentation.</div>
+          <div class="wcard-metric">Bug resolution 28% faster</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+      <div class="wcard reveal delay-3" onclick="openModal('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&h=900&fit=crop&q=85')">
+        <div class="wcard-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=420&fit=crop&q=80" alt="ClickUp operations workspace" loading="lazy">
+          <div class="wcard-overlay"></div>
+          <span class="wcard-chip">ClickUp</span>
+        </div>
+        <div class="wcard-body">
+          <div class="wcard-title">ClickUp Operations Workspace</div>
+          <div class="wcard-desc">ClickUp setup for a 30-person ops team — space hierarchy, recurring task automation, role-based views per department, and a client-facing portal built with public view sharing.</div>
+          <div class="wcard-metric">Onboarding cut from 6 days to 3</div>
+        </div>
+        <div class="wcard-arrow">↗</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     TECH STACK
+═══════════════════════════════════════════ -->
+<section class="section section-alt" id="stack">
+  <div class="container">
+    <div class="eyebrow reveal"><span class="eyebrow-line"></span>Technology Stack</div>
+    <h2 class="section-title reveal delay-1">Tools I work with<br><strong>every day</strong></h2>
+    <p class="section-sub reveal delay-2">Specialised in automation platforms, CRM ecosystems, and the integrations that bind them into a single operating layer.</p>
+
+    <div class="stack-grid reveal delay-2">
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot"><span>HubSpot</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier"><span>Zapier</span></div>
+      <div class="stile"><img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp"><span>ClickUp</span></div>
+      <div class="stile"><img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n"><span>n8n</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira"><span>Jira</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"><span>Microsoft</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI"><span>OpenAI</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/zoho-1.svg" alt="Zoho"><span>Zoho</span></div>
+      <div class="stile"><img src="https://cdn.brandfetch.io/id6O2oGzv-/theme/dark/idhg2vnQYV.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Google Ads"><span>Google Ads</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/meta-3.svg" alt="Meta"><span>Meta Ads</span></div>
+      <div class="stile"><img src="https://cdn.brandfetch.io/idYpJMnlBx/w/192/h/192/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Google"><span>Google</span></div>
+      <div class="stile"><img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" alt="Canva"><span>Canva</span></div>
+    </div>
+
+    <!-- Logo marquee -->
+    <div class="marquee-wrap reveal delay-3">
+      <div class="marquee-track">
+        <img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot">
+        <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier">
+        <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira">
+        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft">
+        <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI">
+        <img src="https://cdn.worldvectorlogo.com/logos/zoho-1.svg" alt="Zoho">
+        <img src="https://cdn.worldvectorlogo.com/logos/meta-3.svg" alt="Meta">
+        <img src="https://cdn.brandfetch.io/id6O2oGzv-/theme/dark/idhg2vnQYV.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Slack">
+        <img src="https://cdn.brandfetch.io/idYpJMnlBx/w/192/h/192/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Google">
+        <img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" alt="Canva">
+        <img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n">
+        <img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp">
+        <!-- Duplicated for seamless loop -->
+        <img src="https://cdn.worldvectorlogo.com/logos/hubspot.svg" alt="HubSpot">
+        <img src="https://cdn.worldvectorlogo.com/logos/zapier.svg" alt="Zapier">
+        <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira">
+        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft">
+        <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI">
+        <img src="https://cdn.worldvectorlogo.com/logos/zoho-1.svg" alt="Zoho">
+        <img src="https://cdn.worldvectorlogo.com/logos/meta-3.svg" alt="Meta">
+        <img src="https://cdn.brandfetch.io/id6O2oGzv-/theme/dark/idhg2vnQYV.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="Slack">
+        <img src="https://cdn.brandfetch.io/idYpJMnlBx/w/192/h/192/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Google">
+        <img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" alt="Canva">
+        <img src="https://cdn.brandfetch.io/idU6lzwMYA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="n8n">
+        <img src="https://cdn.brandfetch.io/idO6_6uqJ9/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" alt="ClickUp">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-copy reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span>About</div>
+        <h2>Systems built around<br><strong>how your business actually runs</strong></h2>
+        <p>My background is in revenue operations and marketing technology. Not the kind where you pick a tool from a vendor list and configure a few settings — I mean the messy kind, where you're trying to get five different platforms to behave like one coherent system, and you need to understand the business logic before you touch anything.</p>
+        <p>I start every engagement the same way: by understanding what's actually breaking. What's manual that shouldn't be? Where does data fall out? What's the team doing because there's no other option? Once I have that, the build is straightforward — clean, documented, and built to last beyond the initial handoff.</p>
+        <p>I've worked with B2B SaaS companies, professional services firms, and e-commerce teams across the US, UK, Australia, and Canada. The tools change. The underlying problems rarely do.</p>
+      </div>
+
+      <div class="services reveal delay-2">
+        <div class="svc">
+          <div class="svc-icon">⚡</div>
+          <div>
+            <div class="svc-name">CRM Architecture &amp; Administration</div>
+            <div class="svc-desc">HubSpot portal builds from scratch — properties, pipelines, lifecycle stages, and team permissions done properly.</div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">🔁</div>
+          <div>
+            <div class="svc-name">Workflow &amp; Sequence Automation</div>
+            <div class="svc-desc">Multi-branch workflows, automated email sequences, lead scoring logic, and smart re-enrolment rules.</div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">🔗</div>
+          <div>
+            <div class="svc-name">Cross-platform Integrations</div>
+            <div class="svc-desc">Connecting CRM, ad platforms, project management, and internal tools via n8n, Zapier, and custom webhooks.</div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">📋</div>
+          <div>
+            <div class="svc-name">Project Management Systems</div>
+            <div class="svc-desc">Structured workspaces in ClickUp, Wrike, and Jira — automation rules, custom views, and leadership dashboards.</div>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">📊</div>
+          <div>
+            <div class="svc-name">Reporting &amp; Revenue Attribution</div>
+            <div class="svc-desc">Multi-touch attribution dashboards and funnel analytics connected directly to pipeline and revenue data.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     IMPACT
+═══════════════════════════════════════════ -->
+<section class="section section-alt" id="impact">
+  <div class="container">
+    <div class="eyebrow reveal"><span class="eyebrow-line"></span>Business Impact</div>
+    <h2 class="section-title reveal delay-1">Numbers that reflect<br><strong>real operational change</strong></h2>
+
+    <div class="impact-grid">
+      <div class="icard reveal delay-1">
+        <div class="icard-bg"></div>
+        <div class="icard-icon">⚙️</div>
+        <div class="icard-num" data-target="25" data-suffix="+">0<sup>+</sup></div>
+        <div class="icard-label">Automation Workflows Shipped</div>
+        <div class="icard-sub">CRM, marketing, and ops workflows live in production environments across multiple clients</div>
+      </div>
+      <div class="icard reveal delay-2">
+        <div class="icard-bg"></div>
+        <div class="icard-icon">📉</div>
+        <div class="icard-num" data-target="30" data-suffix="%">0<sup>%</sup></div>
+        <div class="icard-label">Reduction in Manual Work</div>
+        <div class="icard-sub">Lead assignment, data entry, and reporting hours eliminated through targeted automation</div>
+      </div>
+      <div class="icard reveal delay-3">
+        <div class="icard-bg"></div>
+        <div class="icard-icon">🌐</div>
+        <div class="icard-num" data-target="4" data-suffix="">0</div>
+        <div class="icard-label">Global Markets Supported</div>
+        <div class="icard-sub">Active systems supporting revenue teams in the US, UK, Australia, and Canada</div>
+      </div>
+      <div class="icard reveal delay-4">
+        <div class="icard-bg"></div>
+        <div class="icard-icon">🔌</div>
+        <div class="icard-num" data-target="15" data-suffix="+">0<sup>+</sup></div>
+        <div class="icard-label">Tools Integrated</div>
+        <div class="icard-sub">A single connected ecosystem spanning sales, marketing, ops, and reporting platforms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div class="eyebrow reveal"><span class="eyebrow-line"></span>Get In Touch</div>
+      <h2 class="section-title reveal delay-1">Let's build something<br><strong>worth automating</strong></h2>
+      <p class="contact-body reveal delay-2">
+        Messy CRM? Broken handoffs between tools? Reporting that eats half your Monday? I've fixed all of these. Drop me an email or connect on LinkedIn and we'll talk through what you're dealing with — no pitch, just a conversation.
+      </p>
+      <div class="contact-links reveal delay-3">
+        <a href="mailto:hashaamtanveerk@gmail.com" class="clink primary">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Send an Email
+        </a>
+        <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank" class="clink">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="Hashaam_Tanveer_Resume.pdf" target="_blank" class="clink">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a1 1 0 001 1h16a1 1 0 001-1v-3"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-brand">Hashaam <span>Tanveer</span></div>
+  <div class="footer-copy">© 2026 · All rights reserved</div>
+  <nav class="footer-links">
+    <a href="#work">Work</a>
+    <a href="#stack">Stack</a>
+    <a href="#about">About</a>
+    <a href="mailto:hashaamtanveerk@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/hashaamtanveerhtk/" target="_blank">LinkedIn</a>
+  </nav>
+</footer>
+
+
+<!-- ═══════ IMAGE MODAL ═══════ -->
+<div class="modal-overlay" id="modal" onclick="handleModalClick(event)">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <img class="modal-img" id="modalImg" src="" alt="">
+</div>
+
+
+<!-- JavaScript — at the end for fast page load -->
+<script src="script.js"></script>
+
 </body>
 </html>
