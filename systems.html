@@ -1,126 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HT. Systems — Case studies of intelligent systems, AI agents, and automation pipelines we've built.">
+  <title>Systems & Projects — HT. Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>⚡</text></svg>">
 
-<title>Systems Architecture | Hashaam Tanveer</title>
+  <style>
+    /* Page-specific styles */
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    .case-study:last-child { border-bottom: none; }
 
-<style>
+    .case-study:nth-child(even) {
+      direction: rtl;
+    }
 
-body{
-font-family:Inter;
-background:#011a17;
-color:#e6fffa;
-margin:0;
-}
+    .case-study:nth-child(even) > * {
+      direction: ltr;
+    }
 
-/* animated gradient */
+    .case-study__visual {
+      aspect-ratio: 16 / 11;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      border: var(--glass-border);
+    }
 
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:linear-gradient(45deg,#002e2a,#01413c,#002e2a);
-animation:bg 18s linear infinite;
-z-index:-1;
-}
+    .case-study__visual-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
 
-@keyframes bg{
-0%{transform:translateX(0)}
-50%{transform:translateX(-50%)}
-100%{transform:translateX(0)}
-}
+    .case-study__visual-code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+      white-space: pre-wrap;
+      text-align: left;
+      max-width: 100%;
+    }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:120px 20px;
-}
+    .case-study__content { }
 
-h1{
-font-size:48px;
-margin-bottom:30px;
-}
+    .case-study__tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      background: rgba(6,182,212,0.1);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-}
+    .case-study__title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
 
-.card{
-background:#042a26;
-padding:25px;
-border-radius:12px;
-border:1px solid #064d44;
-transition:.3s;
-}
+    .case-study__desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
 
-.card:hover{
-transform:translateY(-6px);
-border-color:#00ffcc;
-}
+    .case-study__meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
 
-.card img{
-width:100%;
-border-radius:8px;
-margin-bottom:15px;
-}
+    .case-study__meta-item {
+      background: var(--bg-glass);
+      border: var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
 
-.back{
-display:inline-block;
-margin-top:80px;
-padding:12px 25px;
-background:#00ffcc;
-color:#01201c;
-border-radius:8px;
-text-decoration:none;
-}
+    .case-study__meta-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-</style>
+    .case-study__meta-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .case-study__tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .case-study__tech {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      background: rgba(124,92,252,0.08);
+      border: 1px solid rgba(124,92,252,0.15);
+      border-radius: 100px;
+      color: var(--text-secondary);
+    }
+
+    /* Featured projects grid */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .case-study {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0;
+      }
+      .case-study:nth-child(even) { direction: ltr; }
+      .case-study__meta { grid-template-columns: repeat(3, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="noise" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-<div class="container">
+  <div class="loader-overlay" role="status" aria-label="Loading">
+    <div class="loader-logo">HT.</div>
+    <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+  </div>
 
-<h1>Automation System Architecture</h1>
+  <!-- Nav -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">HT.</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="stack.html" class="nav__link">Stack</a>
+        <a href="systems.html" class="nav__link">Systems</a>
+        <a href="diagrams.html" class="nav__link">Architecture</a>
+        <a href="mailto:hashaamtanveer@outlook.com" class="nav__cta" data-magnetic>Start Project</a>
+      </div>
+      <button class="nav__burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
-<div class="grid">
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" style="min-height: 60vh;">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__grid"></div>
+      <div class="hero__orb hero__orb--1" style="opacity:0.2;"></div>
+      <div class="hero__orb hero__orb--3" style="opacity:0.15;"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge reveal">
+          <span class="hero__badge-dot"></span>
+          Case Studies
+        </div>
+        <h1 class="hero__title reveal" style="transition-delay:0.1s">
+          Systems We've <span class="text-gradient">Shipped</span>
+        </h1>
+        <p class="hero__subtitle reveal" style="transition-delay:0.2s">
+          Every project is a product. Here's how we turn complex problems into elegant, scalable systems.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<img src="images/Dashboard HubSpot.png">
-<h3>HubSpot Analytics Architecture</h3>
-<p>Enterprise revenue reporting dashboards and lifecycle analytics.</p>
-</div>
+  <!-- ==================== CASE STUDIES ==================== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
 
-<div class="card">
-<img src="images/Lead pass Workflow.png">
-<h3>Lead Routing Engine</h3>
-<p>Multi-branch lead routing automation architecture.</p>
-</div>
+      <!-- Case Study 1 -->
+      <div class="case-study reveal">
+        <div class="case-study__visual" style="background: linear-gradient(135deg, #7c5cfc15, #06b6d415);">
+          <div class="case-study__visual-inner">
+            <div class="case-study__visual-code">
+class AIAgent:
+  def __init__(self, model, tools):
+    self.model = model
+    self.tools = tools
+    self.memory = VectorStore()
+  
+  async def reason(self, query):
+    context = self.memory.search(query)
+    plan = await self.model.plan(
+      query, context, self.tools
+    )
+    return await self.execute(plan)
+  
+  async def execute(self, plan):
+    results = []
+    for step in plan.steps:
+      tool = self.tools[step.tool]
+      result = await tool.run(step.params)
+      results.append(result)
+    return self.synthesize(results)
+            </div>
+          </div>
+        </div>
+        <div class="case-study__content">
+          <span class="case-study__tag">AI Agent System</span>
+          <h2 class="case-study__title">Autonomous Research Agent</h2>
+          <p class="case-study__desc">
+            Built a multi-tool AI agent that autonomously researches, analyzes, and produces structured reports — replacing 40+ hours of weekly manual research across the organization.
+          </p>
+          <div class="case-study__meta">
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">40h</div>
+              <div class="case-study__meta-label">Saved / Week</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">95%</div>
+              <div class="case-study__meta-label">Accuracy</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">3 min</div>
+              <div class="case-study__meta-label">Avg Report</div>
+            </div>
+          </div>
+          <div class="case-study__tags">
+            <span class="case-study__tech">LangChain</span>
+            <span class="case-study__tech">GPT-4</span>
+            <span class="case-study__tech">Pinecone</span>
+            <span class="case-study__tech">FastAPI</span>
+          </div>
+        </div>
+      </div>
 
-<div class="card">
-<img src="images/Webinar wf.png">
-<h3>Webinar Automation System</h3>
-<p>Teams webinar integration with CRM lifecycle automation.</p>
-</div>
+      <!-- Case Study 2 -->
+      <div class="case-study reveal">
+        <div class="case-study__visual" style="background: linear-gradient(135deg, #06b6d415, #34d39915);">
+          <div class="case-study__visual-inner">
+            <div class="case-study__visual-code">
+// Pipeline Orchestrator
+const pipeline = new Pipeline({
+  triggers: ['webhook', 'schedule'],
+  stages: [
+    { name: 'ingest',    fn: extractData },
+    { name: 'transform', fn: normalizeSchema },
+    { name: 'enrich',    fn: aiClassify },
+    { name: 'route',     fn: smartRoute },
+    { name: 'deliver',   fn: multiChannel },
+  ],
+  errorHandler: retryWithBackoff,
+  monitoring: prometheus,
+});
 
-<div class="card">
-<img src="images/Education Campaign.png">
-<h3>Education Campaign Automation</h3>
-<p>Conditional segmentation workflows for enterprise campaigns.</p>
-</div>
+pipeline.on('complete', (metrics) => {
+  dashboard.update(metrics);
+  alerting.evaluate(metrics);
+});
+            </div>
+          </div>
+        </div>
+        <div class="case-study__content">
+          <span class="case-study__tag">Automation Pipeline</span>
+          <h2 class="case-study__title">End-to-End Data Pipeline</h2>
+          <p class="case-study__desc">
+            Designed a real-time data pipeline that ingests, transforms, and routes 500K+ daily events — with AI-powered classification and intelligent error handling.
+          </p>
+          <div class="case-study__meta">
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">500K</div>
+              <div class="case-study__meta-label">Events / Day</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">&lt;200ms</div>
+              <div class="case-study__meta-label">Latency</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">99.9%</div>
+              <div class="case-study__meta-label">Uptime</div>
+            </div>
+          </div>
+          <div class="case-study__tags">
+            <span class="case-study__tech">Node.js</span>
+            <span class="case-study__tech">Redis</span>
+            <span class="case-study__tech">PostgreSQL</span>
+            <span class="case-study__tech">Docker</span>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <!-- Case Study 3 -->
+      <div class="case-study reveal">
+        <div class="case-study__visual" style="background: linear-gradient(135deg, #f472b615, #7c5cfc15);">
+          <div class="case-study__visual-inner">
+            <div class="case-study__visual-code">
+# NLP Classification Engine
+class SentimentEngine:
+  def __init__(self):
+    self.model = AutoModel.from_pretrained(
+      "custom-sentiment-v3"
+    )
+    self.tokenizer = AutoTokenizer(...)
+    self.cache = RedisCache(ttl=3600)
+  
+  def analyze(self, texts: list[str]):
+    cached = self.cache.get_batch(texts)
+    uncached = [t for t in texts 
+                if t not in cached]
+    
+    if uncached:
+      embeddings = self.tokenizer(uncached)
+      predictions = self.model(embeddings)
+      self.cache.set_batch(
+        uncached, predictions
+      )
+    
+    return self.merge(cached, predictions)
+            </div>
+          </div>
+        </div>
+        <div class="case-study__content">
+          <span class="case-study__tag">ML / NLP System</span>
+          <h2 class="case-study__title">Real-Time Sentiment Engine</h2>
+          <p class="case-study__desc">
+            Built a production NLP system that processes customer feedback in real-time, classifying sentiment and routing critical issues to the right teams automatically.
+          </p>
+          <div class="case-study__meta">
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">10K</div>
+              <div class="case-study__meta-label">Texts / Hour</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">97%</div>
+              <div class="case-study__meta-label">F1 Score</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">5x</div>
+              <div class="case-study__meta-label">Faster Response</div>
+            </div>
+          </div>
+          <div class="case-study__tags">
+            <span class="case-study__tech">HuggingFace</span>
+            <span class="case-study__tech">PyTorch</span>
+            <span class="case-study__tech">Redis</span>
+            <span class="case-study__tech">AWS</span>
+          </div>
+        </div>
+      </div>
 
-<a href="index.html" class="back">Back to Portfolio</a>
+      <!-- Case Study 4 -->
+      <div class="case-study reveal">
+        <div class="case-study__visual" style="background: linear-gradient(135deg, #f59e0b15, #f472b615);">
+          <div class="case-study__visual-inner">
+            <div class="case-study__visual-code">
+// Scalable SaaS Backend
+const app = new Application({
+  auth: JWTStrategy({ 
+    provider: 'clerk',
+    rbac: true 
+  }),
+  database: {
+    primary: PostgresPool({ max: 50 }),
+    cache: Redis({ cluster: true }),
+    search: ElasticSearch(),
+  },
+  api: {
+    rest: ExpressRouter(routes),
+    graphql: ApolloServer(schema),
+    websocket: SocketIO(handlers),
+  },
+  services: [
+    BillingService(stripe),
+    NotificationService(sns),
+    AnalyticsService(mixpanel),
+  ],
+});
+            </div>
+          </div>
+        </div>
+        <div class="case-study__content">
+          <span class="case-study__tag">Full-Stack Platform</span>
+          <h2 class="case-study__title">Multi-Tenant SaaS Platform</h2>
+          <p class="case-study__desc">
+            Architected a complete SaaS platform with multi-tenancy, real-time collaboration, role-based access, and integrated billing — serving 200+ organizations.
+          </p>
+          <div class="case-study__meta">
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">200+</div>
+              <div class="case-study__meta-label">Organizations</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">50K</div>
+              <div class="case-study__meta-label">Active Users</div>
+            </div>
+            <div class="case-study__meta-item">
+              <div class="case-study__meta-value">&lt;50ms</div>
+              <div class="case-study__meta-label">API Response</div>
+            </div>
+          </div>
+          <div class="case-study__tags">
+            <span class="case-study__tech">Next.js</span>
+            <span class="case-study__tech">PostgreSQL</span>
+            <span class="case-study__tech">Stripe</span>
+            <span class="case-study__tech">AWS</span>
+          </div>
+        </div>
+      </div>
 
-</div>
+    </div>
+  </section>
 
+  <!-- ==================== MORE PROJECTS ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">More Work</span>
+        <h2 class="section__title">Featured <span class="text-gradient">Projects</span></h2>
+      </div>
+
+      <div class="featured-grid stagger-children">
+        <div class="case-card" data-tilt="5">
+          <div class="case-card__visual">
+            <div class="case-card__gradient case-card__gradient--1"></div>
+            <div class="case-card__visual-text">RAG</div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">AI / RAG</span>
+            <h3 class="case-card__title">Document Intelligence System</h3>
+            <p class="case-card__desc">RAG-powered system for querying thousands of documents with natural language — with citation tracking and confidence scoring.</p>
+            <span class="case-card__link">View Details <span>→</span></span>
+          </div>
+        </div>
+
+        <div class="case-card" data-tilt="5">
+          <div class="case-card__visual">
+            <div class="case-card__gradient case-card__gradient--2"></div>
+            <div class="case-card__visual-text">API</div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Integration</span>
+            <h3 class="case-card__title">Universal API Gateway</h3>
+            <p class="case-card__desc">Centralized API gateway with rate limiting, auth, caching, and real-time monitoring — connecting 15+ external services.</p>
+            <span class="case-card__link">View Details <span>→</span></span>
+          </div>
+        </div>
+
+        <div class="case-card" data-tilt="5">
+          <div class="case-card__visual">
+            <div class="case-card__gradient case-card__gradient--3"></div>
+            <div class="case-card__visual-text">BOT</div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Chatbot</span>
+            <h3 class="case-card__title">AI Customer Support Bot</h3>
+            <p class="case-card__desc">Conversational AI handling 80% of support tickets autonomously, with smooth human handoff for complex cases.</p>
+            <span class="case-card__link">View Details <span>→</span></span>
+          </div>
+        </div>
+
+        <div class="case-card" data-tilt="5">
+          <div class="case-card__visual">
+            <div class="case-card__gradient case-card__gradient--4"></div>
+            <div class="case-card__visual-text">ETL</div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Data</span>
+            <h3 class="case-card__title">Analytics Data Warehouse</h3>
+            <p class="case-card__desc">Scalable data warehouse with automated ETL, custom dashboards, and predictive analytics for business intelligence.</p>
+            <span class="case-card__link">View Details <span>→</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-bottom: 40px;">
+    <div class="container">
+      <div class="glass-card reveal-scale" style="padding: clamp(40px, 6vw, 80px); text-align:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-50%; left:-20%; width:400px; height:400px; background:var(--accent-primary); border-radius:50%; filter:blur(120px); opacity:0.15; pointer-events:none;" aria-hidden="true"></div>
+        <span class="section__label" style="position:relative;">Have a project in mind?</span>
+        <h2 class="section__title" style="position:relative; margin-bottom: 16px;">Let's Build Your <span class="text-gradient">Next System</span></h2>
+        <p class="section__desc" style="position:relative; max-width:550px; margin: 0 auto 32px;">We're always excited to tackle complex problems. Tell us about your vision.</p>
+        <a href="mailto:hashaamtanveer@outlook.com" class="btn btn--primary" data-magnetic style="position:relative;">
+          Start a Conversation <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo">HT.</div>
+          <p class="footer__tagline">Architecting intelligent systems that automate, scale, and deliver measurable business outcomes.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Pages</div>
+          <a href="index.html" class="footer__link">Home</a>
+          <a href="stack.html" class="footer__link">Tech Stack</a>
+          <a href="systems.html" class="footer__link">Systems</a>
+          <a href="diagrams.html" class="footer__link">Architecture</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Connect</div>
+          <a href="mailto:hashaamtanveer@outlook.com" class="footer__link">Email</a>
+          <a href="https://github.com/hashaamtak" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/hashaamtanveer" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 HT. Systems. All rights reserved.</span>
+        <div class="footer__socials">
+          <a href="https://github.com/hashaamtak" class="footer__social" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a href="https://linkedin.com/in/hashaamtanveer" class="footer__social" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+          <a href="mailto:hashaamtanveer@outlook.com" class="footer__social" aria-label="Email">@</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
