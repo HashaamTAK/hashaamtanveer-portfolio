@@ -10,8 +10,9 @@ body {
   position:fixed;
   width:100%;
   height:100%;
-  background: radial-gradient(circle at 30% 20%, #4f7cff22, transparent 40%),
-              radial-gradient(circle at 80% 80%, #7aaeff22, transparent 40%);
+  background:
+    radial-gradient(circle at 20% 20%, #4f7cff33, transparent 40%),
+    radial-gradient(circle at 80% 80%, #7aaeff22, transparent 40%);
   filter: blur(120px);
   z-index:-1;
 }
@@ -31,12 +32,12 @@ body {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:120px 40px;
+  padding:140px 40px;
   gap:60px;
 }
 
 .hero h1 {
-  font-size:60px;
+  font-size:64px;
   line-height:1.1;
 }
 
@@ -49,14 +50,13 @@ body {
 .hero p {
   margin-top:20px;
   color:#9aa4b2;
-  max-width:500px;
 }
 
 /* IMAGE */
 .hero-img img {
   width:260px;
   border-radius:50%;
-  box-shadow:0 0 50px #4f7cff55;
+  box-shadow:0 0 80px #4f7cff55;
 }
 
 /* BUTTON */
@@ -66,17 +66,12 @@ body {
   border-radius:8px;
   color:white;
   text-decoration:none;
+  transition:0.3s;
 }
 
-.btn-secondary {
-  border:1px solid #4f7cff;
-  padding:12px 24px;
-  margin-left:10px;
-}
-
-/* SECTION */
-.section {
-  padding:80px 40px;
+.btn-primary:hover {
+  transform:translateY(-2px);
+  box-shadow:0 0 30px #4f7cff88;
 }
 
 /* GRID */
@@ -88,35 +83,34 @@ body {
 .card {
   flex:1;
   padding:24px;
-  background:rgba(255,255,255,0.05);
   border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
   transition:0.4s;
 }
 
 .card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 0 40px #4f7cff44;
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 60px #4f7cff44;
 }
 
 /* STACK */
-.stack {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
 .stack span {
-  padding:8px 14px;
+  padding:10px 16px;
   background:rgba(255,255,255,0.05);
   border-radius:20px;
+  margin:5px;
+  display:inline-block;
 }
 
-/* CONTACT */
-.contact {
-  text-align:center;
+/* REVEAL */
+.reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
 
-footer {
-  text-align:center;
-  padding:20px;
+.reveal.active {
+  opacity:1;
+  transform:none;
 }
