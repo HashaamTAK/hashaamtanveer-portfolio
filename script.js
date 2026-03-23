@@ -319,6 +319,13 @@ function toggleDrawer() {
   document.getElementById('navDrawer').classList.toggle('open');
   document.getElementById('hbgBtn').classList.toggle('open');
 }
+if (window.innerWidth < 768) {
+  // disable heavy animations on mobile
+}
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  // rest of code
+}
 
 function closeDrawer() {
   document.getElementById('navDrawer').classList.remove('open');
