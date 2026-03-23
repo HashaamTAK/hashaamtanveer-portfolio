@@ -1,26 +1,29 @@
-// smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-  anchor.addEventListener("click",function(e){
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href"))
-    .scrollIntoView({behavior:"smooth"});
-  });
-});
+// SCROLL REVEAL (APPLE STYLE)
+const elements = document.querySelectorAll(".reveal");
 
-// scroll animation
-const elements = document.querySelectorAll(".card, .hero-text, .hero-img");
-
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.opacity=1;
-      entry.target.style.transform="translateY(0)";
+window.addEventListener("scroll", () => {
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      el.classList.add("active");
     }
   });
 });
 
-elements.forEach(el=>{
-  el.style.opacity=0;
-  el.style.transform="translateY(60px)";
-  observer.observe(el);
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener("click", function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({behavior:"smooth"});
+  });
+});
+
+// PARALLAX BACKGROUND (SUBTLE)
+window.addEventListener("mousemove", e=>{
+  const bg = document.querySelector(".bg");
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+
+  bg.style.transform = `translate(${x*20}px, ${y*20}px)`;
 });
